@@ -1,0 +1,95 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://tpsb-switch:17403/merchant/v1.0/create-or-update-terminal
+    body:
+      encoding: UTF-8
+      string: '{"authenticity_token":"WebpayIntegrationPOS-test","secret":"damir!1Najbolji","name":"WebPay
+        Integration POS, test environment","tid":"TID","mid":"Terminal","attended":true,"location_indicator":"merchant","terminal_status":"active","load_balancer":"DummyBalancer","installment_options":"NullInstallments","transport_key":"tmk_test","generate_tmk":true,"default_acquirer_logid":"xml-sim","random":"Sbv1SSOeMd3x7rEPsgUATw=="}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - 'InfoSwitch-HMAC-SHA512-fixed 3310ba26f3de7caa793c4e41c0537561e27a8af4c000525de9df28a6f128a22b0e6c4a882a5ffcff7d90d11075784cc5b14e6ced0a604f085082d4eafaf71310
+        7a04762848c74645a65672401a34395b117e5351b28cef1f9fad115d295f102f029c9ec6937316c09d7c7226c94549d7cc83caf2f9bfe326f41f4bb380e466d0 '
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json
+      connection:
+      - close
+      content-length:
+      - '786'
+    body:
+      encoding: UTF-8
+      string: '{"status":"updated","terminal_id":4,"authenticity_token":"WebpayIntegrationPOS-test","terminal_parameters":{"pos_transport_key":"tmk_test"},"load_balancer":"DummyBalancer","default_acquirer_logid":"xml-sim","installment_options":"NullInstallments","terminal_status":"active","created_at":"2017-01-16
+        11:49:51 -0400","updated_at":"2019-08-13 07:55:31 -0400","version":438,"tmk":"hpCq8rZTn0btFAwp9Y06R4aQqvK2U59G","tmk_kcv":"a823c3","tacqs":{"xml-sim":{"logid":"xml-sim","acquirer_logid":"xml-sim","tid":"3141592","mid":"31415926535898","name":"XML-SIM
+        Test Shop","city":"Willemstad","address":"Otrobanda 3141","country":"CW","mcc":"5411","postal_code":"4797","status":"no-change","created_at":"2017-01-16
+        11:49:51 -0400","updated_at":"2019-08-13 07:53:52 -0400","tacq_status":"active"}}}'
+    http_version: 
+  recorded_at: Tue, 13 Aug 2019 11:55:31 GMT
+- request:
+    method: post
+    uri: http://tpsb-switch:17403/api/v1.0/prepare-transaction
+    body:
+      encoding: UTF-8
+      string: '{"__authenticity_token":"WebpayIntegrationPOS-test","transaction_type":"prepare","amount":10001,"currency":191,"created_at":"2019-08-13
+        13:55:31 +0200","systan":907833,"cardholder_authentication":"signature","card_data_entry":"magstripe","pan":"4222222222222220","track2":"4222222222222220=17073011818341800000","expiration_date":"1707","pos_entry_mode":"012","exp_transaction_type":"purchase","dcc":true,"random":"7HIbaa2JIcixRNvo21LSww==","application_version":"Webpay","authenticity_token":"WebpayIntegrationPOS-test"}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - 'InfoSwitch-HMAC-SHA512-fixed WebpayIntegrationPOS-test 98c7a19a7ea28ecf32731e64adb3e19ff34ac5d0dbd18d982eaee54229a9e39494f51e1633fe140ace8ec7da7aefb88066cfe056d1091fae5f679103c9052454 '
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json
+      connection:
+      - close
+      content-length:
+      - '793'
+    body:
+      encoding: UTF-8
+      string: '{"acquirer":"xml-sim","tacq":"xml-sim","mid":"31415926535898","tid":"3141592","authenticity_token":"WebpayIntegrationPOS-test","systan":907833,"dcc":{"acquirer":"xml-sim","mid":"31415926535898","tid":"3141592","authenticity_token":"WebpayIntegrationPOS-test","systan":907833,"request_id":2345,"response_id":2346,"reference_number":20749,"approval_code":"6719","acquirer_response_code":"00","response_code":"0000","response_message":"transaction
+        approved","status":"approved","transaction_type":"dcc","dcc_performed":true,"amount":10001,"currency":191,"billing_amount":1514,"billing_currency":840,"currency_exchange_margin":500,"currency_exchange_rate":0.151387229306388,"currency_exchange_provider":"test-hnb"},"installments":{"error":"Unsupported
+        installments: unsupported on this terminal"}}'
+    http_version: 
+  recorded_at: Tue, 13 Aug 2019 11:55:32 GMT
+- request:
+    method: post
+    uri: http://tpsb-switch:17403/api/v1.0/authorize-or-purchase
+    body:
+      encoding: UTF-8
+      string: '{"__authenticity_token":"WebpayIntegrationPOS-test","transaction_type":"purchase","amount":10001,"currency":191,"created_at":"2019-08-13
+        13:55:32 +0200","systan":819297,"cardholder_authentication":"signature","card_data_entry":"magstripe","pan":"4222222222222220","track2":"4222222222222220=17073011818341800000","expiration_date":"1707","pos_entry_mode":"012","dcc_rrn":20749,"dcc_accepted_by_client":true,"random":"v8HlTPo0QAJWNAeZ34lUOw==","application_version":"Webpay","authenticity_token":"WebpayIntegrationPOS-test"}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - 'InfoSwitch-HMAC-SHA512-fixed WebpayIntegrationPOS-test 8d3f15731118cc98d3b1a2c034e19417307532fc76dffcde6ec62ca46d4548e38d56d2f39d40c1749040535e36c3046cc1e1dc903f10a48f7d93b5e54dd28a7e '
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json
+      connection:
+      - close
+      content-length:
+      - '643'
+    body:
+      encoding: UTF-8
+      string: '{"request_id":2347,"response_id":2348,"acquirer":"xml-sim","tacq":"xml-sim","mid":"31415926535898","tid":"3141592","authenticity_token":"WebpayIntegrationPOS-test","systan":819297,"approval_code":"84549
+        ","emv_data":{},"reference_number":20749,"acquirer_response_code":"00","acquirer_response_message":"Mapped
+        RC: 00","response_code":"0000","response_message":"transaction approved","status":"approved","transaction_type":"purchase","dcc_performed":true,"amount":10001,"currency":191,"billing_amount":1514,"billing_currency":840,"currency_exchange_margin":500,"currency_exchange_rate":0.151387229306388,"currency_exchange_provider":"test-hnb"}'
+    http_version: 
+  recorded_at: Tue, 13 Aug 2019 11:55:32 GMT
+recorded_with: VCR 4.0.0

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+(
+  bash -s <<EOF
+    source ~/.bash_profile
+    cd $1
+    source ./.rvmrc
+    ( 
+      export RAILS_ENV=production # default to production
+      echo "============================================="
+      date
+      foreman run $3
+    ) >>$2 2>&1
+EOF
+)

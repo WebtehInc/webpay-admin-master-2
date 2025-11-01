@@ -1,0 +1,29 @@
+ACQUIRING_DATA_SETTINGS = {
+  load_balancers: {
+    'DummyBalancer' => 'Route all traffic to default acquirer',
+    'Girasol::WebpayPos' => 'Default router'
+  },
+  acquirer_logids: {
+    'xml-sim' => ' Local simulator',
+    'vidanova-pos' => 'Vidanova - EuroNet',
+    'vidanova-fdms-pos' => 'Vidanova - FirstData'
+  },
+  installment_options: {
+    'DummyInstallments' => 'Simple installments',
+    'NullInstallments' => 'No installments'
+  },
+  location_indicators: {
+    'merchant' => 'Store',
+    'off-merchant' => 'Off store',
+    'cardholder' => 'Cardholder',
+    'e-commerce' => 'E-commerce'
+  },
+  terminal_statuses: {
+    'active' => 'Active',
+    'inactive' => 'Inactive'
+  },
+  tacq_statuses: {
+    'active' => 'Active',
+    'inactive' => 'Inactive'
+  }
+}

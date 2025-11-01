@@ -1,0 +1,33 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://tpsb-switch:17403/merchant/v1.0/create-or-update-terminal
+    body:
+      encoding: UTF-8
+      string: '{"authenticity_token":"Terminal:wjmtpmrvforbqcyl","secret":"AXRj1z6IGMuO/rVzRHmsWWdQSSMKULSj2FrjKDl5V36PDr2fSMZA6YEkv0gTGCbRTcWGzTzmDDKZCCJ8sMDmnQ==","name":"Terminal
+        wjmtpmrvforbqcyl","tid":"wjmtpmrvforbqcyl","mid":"Terminal","attended":true,"location_indicator":"merchant","load_balancer":"NullBalancer","installment_options":"NullInstallments","generate_tmk":true,"transport_key":"tmk_test","terminal_status":"active","random":"96BGE/5SEorY+mDsq7TOqg=="}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - 'InfoSwitch-HMAC-SHA512-fixed 3310ba26f3de7caa793c4e41c0537561e27a8af4c000525de9df28a6f128a22b0e6c4a882a5ffcff7d90d11075784cc5b14e6ced0a604f085082d4eafaf71310
+        2dff58c64d98b1c8644d5f215a1d40854a77535770263b129129f02aea16c0048bbf5c448d5ac13e8a2cf97d85a8e383cd4822e94051b28f256f104c4f7173f8 '
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json
+      connection:
+      - close
+      content-length:
+      - '435'
+    body:
+      encoding: UTF-8
+      string: '{"status":"created","terminal_id":35,"authenticity_token":"Terminal:wjmtpmrvforbqcyl","terminal_parameters":{"pos_transport_key":"tmk_test"},"load_balancer":"NullBalancer","default_acquirer_logid":null,"installment_options":"NullInstallments","terminal_status":"active","created_at":"2019-08-13
+        10:10:11 -0400","updated_at":"2019-08-13 10:10:11 -0400","version":1,"tmk":"g2dPWktCPsn2ibKqPQM74YNnT1pLQj7J","tmk_kcv":"cf4e49","tacqs":{}}'
+    http_version: 
+  recorded_at: Tue, 13 Aug 2019 14:10:11 GMT
+recorded_with: VCR 4.0.0

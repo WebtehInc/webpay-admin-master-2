@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+  </head>
+
+  <body>
+    <div class="ui container" style="margin: 1em;">
+
+      <h2 class="ui header">
+        <div class="content">
+          <%=  "#{operator.name}: batch export status for #{date}" %>
+          <div class="sub header">
+            <%= WebPayAdmin.opts[:bank_name] %> <%= WebPayAdmin.opts[:app_name] %>
+          </div>
+        </div>
+      </h2>
+
+      <h3>Exported files:</h3>
+      <% stats[:file_logs].each do |fl| %>
+        <ul>
+          <li>File:  <strong><%= File.basename(fl.file_path) %></strong></li>
+          <li>Type:  <strong><%= fl.file_type %></strong></li>
+          <li>Date:  <strong><%= fl.file_timestamp %></strong></li>
+          <li>Batch: <strong><%= fl.file_reference_number %></strong></li>
+          <li>Count: <strong><%= fl.trx_count.to_i %></strong></li>
+          <li>Total: <strong><%= Utils.to_money fl.trx_sum_amount.to_i %></strong></li>
+        </ul>
+      <% end %>
+
+      <h3>Totals:</h3>
+      <ul>
+        <li>Payments count:    <strong><%= stats[:totals][:payment_count].to_i %></strong></li>
+        <li>Payments amount:   <strong><%= Utils.to_money stats[:totals][:payment_amount].to_i %> <%= operator.currency %></strong></li>
+
+        <li>Reversals count:   <strong><%= stats[:totals][:reversal_count].to_i %></strong></li>
+        <li>Reversals amount:  <strong><%= Utils.to_money stats[:totals][:reversal_amount].to_i %> <%= operator.currency %></strong></li>
+      </ul>
+
+      <br>
+    </div>
+  </body>
+
+</html>

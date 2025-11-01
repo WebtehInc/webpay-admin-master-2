@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://tpsb-switch:17403/merchant/v1.0/create-or-update-terminal
+    body:
+      encoding: UTF-8
+      string: '{"authenticity_token":"WebpayIntegrationPOS-test","secret":"damir!1Najbolji","name":"WebPay
+        Integration POS, test environment","tid":"TID","mid":"Terminal","attended":true,"location_indicator":"merchant","terminal_status":"active","load_balancer":"DummyBalancer","installment_options":"NullInstallments","transport_key":"tmk_test","generate_tmk":true,"default_acquirer_logid":"xml-sim","random":"cuRCT6qArQwa31wiYcEAdg=="}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - 'InfoSwitch-HMAC-SHA512-fixed 3310ba26f3de7caa793c4e41c0537561e27a8af4c000525de9df28a6f128a22b0e6c4a882a5ffcff7d90d11075784cc5b14e6ced0a604f085082d4eafaf71310
+        860e1c04bdb9d92a91b19cb90feafea3c9005fd35318081dc1787398291d9a575a4c373f2f5aea313f0c12ee36d7bb29cd813769fed3f7d7e775d68a4181eb9b '
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json
+      connection:
+      - close
+      content-length:
+      - '786'
+    body:
+      encoding: UTF-8
+      string: '{"status":"updated","terminal_id":4,"authenticity_token":"WebpayIntegrationPOS-test","terminal_parameters":{"pos_transport_key":"tmk_test"},"load_balancer":"DummyBalancer","default_acquirer_logid":"xml-sim","installment_options":"NullInstallments","terminal_status":"active","created_at":"2017-01-16
+        11:49:51 -0400","updated_at":"2019-08-13 10:23:43 -0400","version":456,"tmk":"P9B/XCpinnPGP0s4nk9nrz/Qf1wqYp5z","tmk_kcv":"75e69e","tacqs":{"xml-sim":{"logid":"xml-sim","acquirer_logid":"xml-sim","tid":"3141592","mid":"31415926535898","name":"XML-SIM
+        Test Shop","city":"Willemstad","address":"Otrobanda 3141","country":"CW","mcc":"5411","postal_code":"4797","status":"no-change","created_at":"2017-01-16
+        11:49:51 -0400","updated_at":"2019-08-13 10:23:39 -0400","tacq_status":"active"}}}'
+    http_version: 
+  recorded_at: Tue, 13 Aug 2019 14:23:43 GMT
+- request:
+    method: post
+    uri: http://tpsb-switch:17403/api/v1.0/close-day
+    body:
+      encoding: UTF-8
+      string: '{"__authenticity_token":"WebpayIntegrationPOS-test","batch_id":0,"authorize_amount":0,"authorize_count":0,"purchase_amount":0,"purchase_count":0,"capture_amount":0,"capture_count":0,"void_amount":0,"void_count":0,"refund_amount":0,"refund_count":0,"random":"/0t5E5V2JxHm6kZLKMnyPg==","application_version":"Webpay","authenticity_token":"WebpayIntegrationPOS-test"}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - 'InfoSwitch-HMAC-SHA512-fixed WebpayIntegrationPOS-test 70dbec24a08286b702edda98a109a51b2c8fe4321e4121d38f7dba886a87c4a22b5b62aa9bc19ed3d6d0270b4d3b3b4ca2af25cb4c112162d946332882d7edd6 '
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json
+      connection:
+      - close
+      content-length:
+      - '260'
+    body:
+      encoding: UTF-8
+      string: '{"status":"mismatch","batch_id":44,"authorize_amount":0,"authorize_count":0,"purchase_amount":0,"purchase_count":0,"capture_amount":0,"capture_count":0,"void_amount":0,"void_count":0,"refund_amount":0,"refund_count":0,"server_time":"2019-08-13
+        10:23:44 -0400"}'
+    http_version: 
+  recorded_at: Tue, 13 Aug 2019 14:23:44 GMT
+- request:
+    method: post
+    uri: http://tpsb-switch:17403/api/v1.0/authorize-or-purchase
+    body:
+      encoding: UTF-8
+      string: '{"__authenticity_token":"WebpayIntegrationPOS-test","transaction_type":"purchase","amount":10001,"currency":840,"created_at":"2019-08-13
+        16:24:50 +0200","systan":569579,"cardholder_authentication":"offline pin","card_data_entry":"emv","pan":"4111111111111111","track2":"4111111111111111=17072011818341800000","expiration_date":"1707","pos_entry_mode":"051","emv_data":{"5F34":"01","84":"A0000000049999C000010560","8F":"04","82":"5800","95":"0000001000","9A":"100109","9C":"00","9F36":"0001","9F37":"D8B57618","9F26":"45B2B2B634ADB290","9F27":"80","9F10":"0D10A50003020800C75900000000000000FF","9F34":"410302","9F33":"E0F0C8","9F02":"000000010001","9F03":"000000000000","9F08":"0000","9F09":"0000","9F1E":"00000000","9F1A":"0191","5F2A":"0840","9F35":"22","9F41":"1234"},"random":"JgTgMTK5f2Kqwfmq8KXAIw==","application_version":"Webpay","authenticity_token":"WebpayIntegrationPOS-test"}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - 'InfoSwitch-HMAC-SHA512-fixed WebpayIntegrationPOS-test f6dfe313bdd229493275255a6cfa92fef0078a2363718d5b6578d26102cd0159971fbfefdee1fd36b30e777fb1691a31e5ecaf2bfe04b0a4d172e0133df64e77 '
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json
+      connection:
+      - close
+      content-length:
+      - '642'
+    body:
+      encoding: UTF-8
+      string: '{"request_id":2399,"response_id":2400,"acquirer":"xml-sim","tacq":"xml-sim","mid":"31415926535898","tid":"3141592","authenticity_token":"WebpayIntegrationPOS-test","systan":569579,"approval_code":"582317","emv_data":{"8A":"3030","91":""},"reference_number":20764,"acquirer_response_code":"00","acquirer_response_message":"Mapped
+        RC: 00","response_code":"0000","response_message":"transaction approved","status":"approved","transaction_type":"purchase","dcc_performed":false,"amount":10001,"currency":840,"billing_amount":10001,"billing_currency":840,"currency_exchange_margin":0,"currency_exchange_rate":1.0,"currency_exchange_provider":null}'
+    http_version: 
+  recorded_at: Tue, 13 Aug 2019 14:24:50 GMT
+- request:
+    method: post
+    uri: http://tpsb-switch:17403/api/v1.0/close-day
+    body:
+      encoding: UTF-8
+      string: '{"__authenticity_token":"WebpayIntegrationPOS-test","batch_id":45,"authorize_amount":0,"authorize_count":0,"purchase_amount":10001,"purchase_count":1,"capture_amount":0,"capture_count":0,"void_amount":0,"void_count":0,"refund_amount":0,"refund_count":0,"random":"t7DUn6FypReMMc9CLl+3XA==","application_version":"Webpay","authenticity_token":"WebpayIntegrationPOS-test"}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - 'InfoSwitch-HMAC-SHA512-fixed WebpayIntegrationPOS-test 423efa105d92f9ec1c43d36a8bb26ecea19a48f23c0dd9067340ca046e1640ebd04e4c0a9a0b9debfa1ad9611e7a0524f2eeb68f7bd9a9504d6f4a9f90e7a8cc '
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json
+      connection:
+      - close
+      content-length:
+      - '264'
+    body:
+      encoding: UTF-8
+      string: '{"status":"approved","batch_id":45,"authorize_amount":0,"authorize_count":0,"purchase_amount":10001,"purchase_count":1,"capture_amount":0,"capture_count":0,"void_amount":0,"void_count":0,"refund_amount":0,"refund_count":0,"server_time":"2019-08-13
+        10:24:51 -0400"}'
+    http_version: 
+  recorded_at: Tue, 13 Aug 2019 14:24:51 GMT
+recorded_with: VCR 4.0.0

@@ -1,0 +1,49 @@
+en:
+  errors:
+    alpha?: "must contain only alphabetic characters"
+    numeric?: "must contain only digits"
+    email?: "must look like an email"
+    unique?: "has already been taken"
+    strong?: "must be a strong password (choose a lowercase letter, an uppercase letter, a digit and a special character)"
+    valid?: "is invalid"
+    checked?: "must be checked"
+    empty_collection?: "belonging collection must be empty"
+    inactive?: "must be inactive"
+
+    # numbers
+    positive?: "must be filled"
+    positive_or_zero?: "must be filled"
+
+    # transfers
+    # available_funds?: "not enough funds"
+    # valid_source_account?: "unknown account"
+    # valid_target_account?: "unknown target account"
+
+    # terminal api
+    # valid_voucher?: "unknown voucher"
+    # valid_customer?: "unknown customer"
+    # valid_operator?: "unknown operator"
+    # valid_terminal?: "unknown terminal"
+    # under_batch_limit?: "batch limit exceeded"
+    # under_amount_limit?: "amount limit exceeded"
+    # valid_currency?: "is invalid"
+    # valid_pan?: "is invalid"
+
+    # customers
+    valid_operator?: "unknown or disabled operator"
+
+    # upload vouchers
+    valid_product?: "unknown product"
+
+    # replenish stock
+    valid_stock?: "unknown stock"
+
+    # fees and limits
+    positive_if_active?: "must be positive if active"
+
+    # api
+    available?: "is not available"
+    valid_access_code?: "is invalid"
+    valid_otp_code?: "is invalid"
+    valid_access_token?: "is invalid"
+    valid_digest?: "is invalid"

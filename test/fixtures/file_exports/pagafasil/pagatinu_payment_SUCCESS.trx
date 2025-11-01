@@ -1,0 +1,4 @@
+Batch,Transaction,Meter,Amount,Paym. Type,Units,AQ_Date,AQ_time,Date,Time,Response Code
+"",1,123456789,10.00,"",TODO,"","",20100921,151022,""
+"",3,321457546,30.00,"",TODO,"","",20100921,151022,""
+Total,2,"",40.00,"",0.0,"","","","",""

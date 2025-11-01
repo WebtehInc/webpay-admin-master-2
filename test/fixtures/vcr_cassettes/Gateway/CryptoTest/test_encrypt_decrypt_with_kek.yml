@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://test-webpay.psbbanknv.com/jsecmodule/luna-crypto
+    body:
+      encoding: UTF-8
+      string: '{"action":"encrypt","key":"encdb_test","mode":"data","clear":"MTIzNDU=\n"}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      date:
+      - Mon, 13 Mar 2017 19:46:53 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '69'
+      connection:
+      - close
+      server:
+      - nginx-more
+    body:
+      encoding: UTF-8
+      string: '{"action":"encrypt","encrypted":"/u1zXuhNTGGusghLIfUS0Q\u003d\u003d"}'
+    http_version: 
+  recorded_at: Mon, 13 Mar 2017 19:46:53 GMT
+- request:
+    method: post
+    uri: https://test-webpay.psbbanknv.com/jsecmodule/luna-crypto
+    body:
+      encoding: UTF-8
+      string: '{"action":"decrypt","key":"encdb_test","mode":"data","encrypted":"/u1zXuhNTGGusghLIfUS0Q=="}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      date:
+      - Mon, 13 Mar 2017 19:46:54 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '44'
+      connection:
+      - close
+      server:
+      - nginx-more
+    body:
+      encoding: UTF-8
+      string: '{"action":"decrypt","clear":"MTIzNDU\u003d"}'
+    http_version: 
+  recorded_at: Mon, 13 Mar 2017 19:46:54 GMT
+recorded_with: VCR 3.0.1

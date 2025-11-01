@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>SPA_APP_NAME_PLACEHOLDER</title>
+
+  <link rel="stylesheet" type="text/css" href="static/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="static/nprogress.css">
+  <link rel="stylesheet" type="text/css" href="static/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="static/trumbowyg.min.css">
+
+  <style>
+    .hide {
+      display: none !important;
+    }
+
+    .ui.divider.small {
+      margin: .2rem 0;
+    }
+
+    .ui.divider.medium {
+      margin: .4rem 0;
+    }
+
+    .ui.header:first-child {
+      margin-top: 0;
+    }
+
+    .red {
+      color: #f2711c !important;
+    }
+
+    .green {
+      color: #2c662d !important;
+    }
+
+    .light {
+      color: #aaa;
+    }
+
+    tr.pointer td,
+    tr.pointer th,
+    .pointer {
+      cursor: pointer !important;
+    }
+
+    .no-pointer {
+      cursor: default !important;
+    }
+
+    .ui.selectable.table tbody tr.no-hover:hover {
+      background: none !important;
+    }
+
+    .slide-transition {
+      transition: all 0.4s ease;
+    }
+
+    .slide-enter,
+    .slide-leave {
+      height: 0;
+      opacity: 0;
+    }
+
+    .message-transition {
+      transition: all 0.6s ease;
+    }
+
+    .message-enter,
+    .message-leave {
+      opacity: 0;
+    }
+
+    .reset {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    .reset-top {
+      padding-top: 0 !important;
+      margin-top: 0 !important;
+    }
+
+    .reset-left {
+      padding-left: 0 !important;
+      margin-left: 0 !important;
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+      content: "";
+      display: table;
+    }
+
+    .clearfix:after {
+      clear: both;
+    }
+
+    .clearfix {
+      zoom: 1;
+      /* ie 6/7 */
+    }
+
+    [v-cloak] {
+      display: none;
+    }
+
+    .v-link-active {
+      color: green !important;
+    }
+
+    .ui.header>.icon {
+      font-size: 2em;
+    }
+
+    /* vertical menu with popup */
+    .ui.popup:before {
+      width: 0;
+    }
+
+    .ui.vertical.menu {
+      width: 75% !important;
+    }
+
+    .ui.vertical.menu.in-field-6 {
+      width: 37.5% !important;
+    }
+
+    .ui.popup {
+      max-width: 75%;
+    }
+
+    .ui.popup.vertical.menu {
+      margin: 0;
+      padding: 0;
+    }
+
+    .ui.floating.dropdown>.menu {
+      margin-top: 1px !important;
+    }
+
+    /* h2 dropdown icon */
+    h2 .ui.dropdown>.dropdown.icon {
+      margin-right: 0;
+    }
+
+    .flatpickr-next-month,
+    .flatpickr-prev-month {
+      font-size: 175%;
+    }
+
+    .ui.action.input input[type="file"] {
+      display: none;
+    }
+
+    a.ui.basic.label {
+      color: #1e70bf;
+    }
+
+    .ui.label {
+      margin-left: 0 !important;
+    }
+
+    .striked {
+      text-decoration: line-through;
+    }
+
+    ul.no-disc {
+      list-style: none;
+    }
+
+    table a.ui.basic.horizontal.label {
+      margin-bottom: .2em;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="app" v-cloak></div>
+  <script id="spa-file" src="static/SPA_JS_FILE_PLACEHOLDER"></script>
+
+  <script type='text/javascript'>
+    // prevent paste for < and >
+    document.onkeypress = function (e) {
+      if ([60, 62].includes(e.which)) { e.preventDefault() }
+    }
+
+    document.onpaste = function (e) {
+      let text = e.clipboardData.getData('text')
+      if (text.includes("<") || text.includes(">")) { e.preventDefault() }
+    }
+
+    // refresh after inactivity
+    var time = new Date().getTime();
+    $(document.body).bind("mousemove keypress", function (e) {
+      time = new Date().getTime()
+    })
+
+    function refresh() {
+      if (new Date().getTime() - time >= 15 * 60 * 1000)
+        window.location.reload(true);
+      else
+        setTimeout(refresh, 10000)
+    }
+
+    setTimeout(refresh, 10000)
+  </script>
+</body>
+
+</html>

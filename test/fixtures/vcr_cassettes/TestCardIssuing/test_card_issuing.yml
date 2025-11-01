@@ -1,0 +1,30 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://tpsb-switch:17403/mifare/v1.0/generate-master-key
+    body:
+      encoding: UTF-8
+      string: '{"__authenticity_token":"NFCWriter:356va4s5fx","__secret":"GAUoRWKS20wcbMuVeLlcHKH0xOmeg+ts6j/6EU8vP7lZijWMTFEXsDVHJu0s47kgG6hUTMH+v/Sh9H50bURGaw==","random":"6U/GbqmpcDAwgLV0XtuIQQ==","application_version":"Webpay"}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - 'InfoSwitch-HMAC-SHA512-fixed NFCWriter:356va4s5fx 2ce1d34c2f240a65b379ed9a5f2ae0d36a37f02a275b2c3e58f0261af91cf58c250ec10f44243e990b7385fa8725d926743a18d12b83b6490c2bb4160b385a7b '
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json
+      connection:
+      - close
+      content-length:
+      - '123'
+    body:
+      encoding: UTF-8
+      string: '{"cmk_host":"tmk_test:K18iw6H9MiIi4GxLuN9ECQ==","cmk_pos":"cFhv0OCRMXYHzYOHUHjK/w==","cmk_kcv":"d23524","status":"success"}'
+    http_version: 
+  recorded_at: Tue, 13 Aug 2019 14:10:07 GMT
+recorded_with: VCR 4.0.0

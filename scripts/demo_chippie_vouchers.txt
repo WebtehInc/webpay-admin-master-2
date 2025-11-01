@@ -1,0 +1,3 @@
+op_code;name;price;currency;value
+ch;Chippie 5;500;USD;12345678901234
+ch;Chippie 5;500;USD;12345678901234

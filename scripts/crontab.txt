@@ -1,0 +1,5 @@
+# pagafasil exports
+*/5       *       *       *       *       /opt/webteh/webpay-admin/scripts/rvm_cron /opt/webteh/webpay-admin log/exporters.log "rake pagafasil:export"
+
+# pagafasil imports
+*         *       *       *       *       /opt/webteh/webpay-admin/scripts/rvm_cron /opt/webteh/webpay-admin log/importers.log "rake pagafasil:import"

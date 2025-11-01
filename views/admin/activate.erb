@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"/>
+    <style>
+      table {
+        border-width: 0;
+        border-style: none;
+        border-color: #0000ff;
+        border-collapse: collapse;
+      }
+      td {
+        border-left: solid 6px #000;
+        padding: 0;
+        margin: 0;
+        width: 0px;
+        height: 6px;
+      }
+      td.black { border-color: #000; }
+      td.white { border-color: #fff; }
+    </style>
+  </head>
+
+  <body>
+    <div style="margin: 1em 2.5em;">
+
+      <h2 class="ui dividing header">
+        <div class="content">
+          Account activation
+          <div class="sub header">
+            <%= WebPayAdmin.opts[:bank_name] %> <%= WebPayAdmin.opts[:app_name] %>
+          </div>
+        </div>
+      </h2>
+
+      <p>
+        Dear <%= "#{admin[:first_name]} #{admin[:last_name]}" %>,
+      </p>
+
+      <p>
+        To activate your account please follow this link:
+        <% link = "#{Mailer.opts[:spa_constants][:activate_admin_path]}/#{admin[:activation_token]}" %>
+        <a href="<%= link %>">
+          <%= link %>
+        </a>
+      </p>
+
+      <p>
+        Then scan this QR code with your mobile authenticator for two-factor authentication:
+      </p>
+
+      <p>
+        <%= qr_code.as_html %>
+      </p>
+
+      <br>
+      <p>Have a nice day!</p>
+
+    </div>
+  </body>
+</html>

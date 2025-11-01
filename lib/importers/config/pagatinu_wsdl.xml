@@ -1,0 +1,3211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s3="http://www.eskom.co.za/xmlvend/revenue-ext/2.1/schema" xmlns:s2="http://www.nrs.eskom.co.za/xmlvend/revenue/2.1/schema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s5="http://www.conlog.co.za/xmlvend/base-ext/2.1.1/schema" xmlns:s6="http://www.eskom.co.za/xmlvend/base-ext/2.1.1/schema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.nrs.eskom.co.za/xmlvend/service/2.1" xmlns:s1="http://www.nrs.eskom.co.za/xmlvend/base/2.1/schema" xmlns:s0="http://www.nrs.eskom.co.za/xmlvend/meter/2.1/schema" xmlns:s4="http://www.eskom.co.za/xmlvend/meter-ext/2.1/schema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://www.nrs.eskom.co.za/xmlvend/service/2.1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.nrs.eskom.co.za/xmlvend/meter/2.1/schema">
+      <s:import namespace="http://www.nrs.eskom.co.za/xmlvend/base/2.1/schema" />
+      <s:element name="confirmMeterReq" type="s0:ConfirmMeterReq" />
+      <s:complexType name="ConfirmMeterReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="idMethod" type="s1:VendIDMethod" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustReportFaultReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="custDetail" type="s1:CustDetail" />
+              <s:element minOccurs="0" maxOccurs="1" name="custFaultReport" type="s0:CustFaultReport" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustFaultReport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NetworkFaultReport">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:CustFaultReport" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MeterFaultReport">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:CustFaultReport">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="meterInfo" type="s1:VendIDMethod" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="UpdateMeterKeyReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="idMethod" type="s1:MeterConfig" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="NonMeterSpecificEngReq" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="meterType" type="s1:MeterType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MenuAccessReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispRegistersReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TestDispenserReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TestAllReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispVerReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TestDisplayReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispPwrLmtReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispKRNReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispTamperReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispInstPwrReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispConsTotReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispPhUnbalanceReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispTIReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TestBreakerReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MeterSpecificEngReq" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseVendReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SetWaterFactorReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:MeterSpecificEngReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="waterFactor" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PhUnbalReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:MeterSpecificEngReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="pwrLmt" type="s1:PwrLmt" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DefCreditReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:MeterSpecificEngReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ClearCreditReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:MeterSpecificEngReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ClearTamperReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:MeterSpecificEngReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EngKCTReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:MeterSpecificEngReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="kctData" type="s1:KCTData" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PwrLmtReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:MeterSpecificEngReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="pwrLmt" type="s1:PwrLmt" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="confirmMeterResp" type="s0:ConfirmMeterResp" />
+      <s:complexType name="ConfirmMeterResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="confirmMeterResult" type="s0:ConfirmMeterResult" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustReportFaultResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="custFaultLog" type="s0:CustFaultLog" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustFaultLog">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="custDetail" type="s1:CustDetail" />
+          <s:element minOccurs="0" maxOccurs="1" name="faultReport" type="s0:CustFaultReport" />
+        </s:sequence>
+        <s:attribute name="refNo" type="s:string" />
+      </s:complexType>
+      <s:complexType name="NonMeterSpecificEngResp" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseResp" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TestDispenserResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="testDispenser" type="s0:TestDispenserTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TestDispenserTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="NonMeterSpecificEngTokenIssue" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="NonMeterSpecificTokenIssue" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="meterType" type="s1:MeterType" />
+          <s:element minOccurs="0" maxOccurs="1" name="token" type="s1:Token" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TestDisplayTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispPwrLmtTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispTITokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispPhUnbalanceTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispKRNTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispTamperTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispConsTotTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TestBreakerTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispRegistersTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TestAllTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispVerTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MenuAccessTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispInstPwrTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MenuAccessResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="menuAccess" type="s0:MenuAccessTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispVerResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dispVer" type="s0:DispVerTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TestAllResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="testAll" type="s0:TestAllTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TestBreakerResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="testBreaker" type="s0:TestBreakerTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TestDisplayResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="testDisp" type="s0:TestDisplayTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispPwrLmtResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dispPwrLmt" type="s0:DispPwrLmtTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispTIResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dispTI" type="s0:DispTITokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispKRNResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dispKRN" type="s0:DispKRNTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispTamperResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dispTamper" type="s0:DispTamperTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispInstPwrResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dispInstPwr" type="s0:DispInstPwrTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispConsTotResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dispConsTot" type="s0:DispConsTotTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispPhUnbalanceResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dispPhUnbalance" type="s0:DispPhUnbalanceTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DispRegistersResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:NonMeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dispRegisters" type="s0:DispRegistersTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="UpdateMeterKeyResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseVendResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="updateMeterKey" type="s1:KCTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MeterSpecificEngResp" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseVendResp" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ClearCreditResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:MeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="clearCredit" type="s1:ClearCreditTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PwrLmtResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:MeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="pwrLmtToken" type="s1:PwrLmtTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PhUnbalResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:MeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="phUnbalance" type="s1:PhUnbalTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DefCreditResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:MeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="defCredit" type="s1:CreditTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ClearTamperResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:MeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="clearTamper" type="s1:ClearTamperTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EngKCTResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:MeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="engKCToken" type="s1:KCTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SetWaterFactorResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:MeterSpecificEngResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="waterFactor" type="s1:WaterFactorTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ConfirmMeterResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="meterDetail" type="s1:MeterDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="custReportFaultReq" type="s0:CustReportFaultReq" />
+      <s:element name="custReportFaultResp" type="s0:CustReportFaultResp" />
+      <s:element name="updateMeterKeyReq" type="s0:UpdateMeterKeyReq" />
+      <s:element name="updateMeterKeyResp" type="s0:UpdateMeterKeyResp" />
+      <s:element name="nonMeterSpecificEngReq" type="s0:NonMeterSpecificEngReq" />
+      <s:element name="nonMeterSpecificEngResp" type="s0:NonMeterSpecificEngResp" />
+      <s:element name="meterSpecificEngReq" type="s0:MeterSpecificEngReq" />
+      <s:element name="meterSpecificEngResp" type="s0:MeterSpecificEngResp" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.nrs.eskom.co.za/xmlvend/base/2.1/schema">
+      <s:import namespace="http://www.conlog.co.za/xmlvend/base-ext/2.1.1/schema" />
+      <s:complexType name="BaseReq">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="clientID" type="s1:DeviceID" />
+          <s:element minOccurs="0" maxOccurs="1" name="terminalID" type="s1:DeviceID" />
+          <s:element minOccurs="0" maxOccurs="1" name="msgID" type="s1:MsgID" />
+          <s:element minOccurs="0" maxOccurs="1" name="authCred" type="s1:AuthCred" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DeviceID" abstract="true" />
+      <s:complexType name="GenericDeviceID">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:DeviceID">
+            <s:attribute name="id" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EANDeviceID">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:DeviceID">
+            <s:attribute name="ean" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MsgID">
+        <s:attribute name="dateTime" type="s:string" />
+        <s:attribute name="uniqueNumber" type="s:positiveInteger" />
+        <s:attribute name="sequenceNumber" type="s:string" />
+      </s:complexType>
+      <s:complexType name="AuthCred">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="opName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="newPassword" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MakeMerchantDepositReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="AccountHolderName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AccountNo" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="AmountDeposited" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="BankName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DateDeposited" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DepositReferenceNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BankBranchCode" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GetVendingServerStateReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="serverID" type="s1:DeviceID" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="IDMethod" abstract="true" />
+      <s:complexType name="VendIDMethod">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:IDMethod">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="meterIdentifier" type="s1:MeterIdentifier" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MeterIdentifier" abstract="true" />
+      <s:complexType name="MeterConfig" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MeterIdentifier" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MeterDetail">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MeterConfig">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="meterType" type="s1:MeterType" />
+            </s:sequence>
+            <s:attribute name="msno" type="s:string" />
+            <s:attribute name="sgc" type="s:string" />
+            <s:attribute name="krn" type="s:string" />
+            <s:attribute name="ti" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MeterType">
+        <s:attribute name="at" type="s:string" />
+        <s:attribute name="tt" type="s:string" />
+      </s:complexType>
+      <s:complexType name="ExtMeterDetail">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MeterDetail">
+            <s:attribute name="useSTT" type="s:boolean" />
+            <s:attribute name="track2Data" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MeterCard">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MeterConfig">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="track2Data" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MeterAccount">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MeterIdentifier">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="AccNo" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="isSmartCard" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MeterNumber">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MeterIdentifier">
+            <s:attribute name="msno" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustIDMethod">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:IDMethod">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="custIdentifier" type="s1:CustIdentifier" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustIdentifier" abstract="true" />
+      <s:complexType name="CustName">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:CustIdentifier">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustAccountNo">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:CustIdentifier">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="organisation" type="s:string" />
+            </s:sequence>
+            <s:attribute name="accNo" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustAddress">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:CustIdentifier">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustIDNumber">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:CustIdentifier">
+            <s:attribute name="idNo" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Currency">
+        <s:attribute name="value" type="s:decimal" use="required" />
+        <s:attribute name="symbol" type="s:string" />
+      </s:complexType>
+      <s:complexType name="PayType" abstract="true" />
+      <s:complexType name="Cash">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:PayType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="tenderAmt" type="s1:Currency" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Cheque">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:PayType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="cheqAmt" type="s1:Currency" />
+              <s:element minOccurs="0" maxOccurs="1" name="accHolderName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="accHolderIDNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="accNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="bankName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="branchCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="cheqNo" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="cheqType" type="s1:ChequeType" />
+              <s:element minOccurs="0" maxOccurs="1" name="micr" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="ChequeType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Personal" />
+          <s:enumeration value="Company" />
+          <s:enumeration value="Government" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="Card" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:PayType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="cardAmt" type="s1:Currency" />
+              <s:element minOccurs="0" maxOccurs="1" name="accHolderName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="pan" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="expDate" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="cvNum" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="clearingHouse" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DebitCard">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:Card" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CreditCard">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:Card" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Unknown">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:PayType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PinVoucher">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:PayType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="voucherSerialNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="voucherPin" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="voucherAmount" type="s1:Currency" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Token" abstract="true" />
+      <s:complexType name="KCToken">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:Token">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="set1stMeterKey" type="s1:STS1Token" />
+              <s:element minOccurs="0" maxOccurs="1" name="set2ndMeterKey" type="s1:STS1Token" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="STS1Token">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:Token">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="stsCipher" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustDetail">
+        <s:attribute name="name" type="s:string" />
+        <s:attribute name="address" type="s:string" />
+        <s:attribute name="contactNo" type="s:string" />
+        <s:attribute name="accNo" type="s:string" />
+        <s:attribute name="locRef" type="s:string" />
+      </s:complexType>
+      <s:complexType name="CustVendDetail">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:CustDetail">
+            <s:attribute name="daysLastPurchase" type="s:integer" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AdviceReq" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="adviceReqMsgID" type="s1:MsgID" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReversalAdviceReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:AdviceReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ConfirmationAdviceReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:AdviceReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="payType" type="s1:PayType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LastRespAdviceReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:AdviceReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseVendReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="resource" type="s1:Resource" />
+              <s:element minOccurs="0" maxOccurs="1" name="idMethod" type="s1:VendIDMethod" />
+              <s:element minOccurs="0" maxOccurs="1" name="tokenDeliveryMethod" type="s5:TokenDeliveryMethod" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Resource" abstract="true" />
+      <s:complexType name="Electricity">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:Resource" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ConnectionTime">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:Resource" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CurrencyResource">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:Resource" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Gas">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:Resource" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Water">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:Resource" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Units">
+        <s:attribute name="value" type="s:decimal" use="required" />
+        <s:attribute name="siUnit" type="s:string" />
+      </s:complexType>
+      <s:complexType name="PwrLmt">
+        <s:attribute name="value" type="s:string" />
+        <s:attribute name="siUnit" type="s:string" />
+      </s:complexType>
+      <s:complexType name="KCTData">
+        <s:attribute name="fromSGC" type="s:string" />
+        <s:attribute name="fromKRN" type="s:string" />
+        <s:attribute name="fromTI" type="s:string" />
+        <s:attribute name="toSGC" type="s:string" />
+        <s:attribute name="toKRN" type="s:string" />
+        <s:attribute name="toTI" type="s:string" />
+      </s:complexType>
+      <s:complexType name="BaseResp">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="clientID" type="s1:DeviceID" />
+          <s:element minOccurs="0" maxOccurs="1" name="serverID" type="s1:DeviceID" />
+          <s:element minOccurs="0" maxOccurs="1" name="terminalID" type="s1:DeviceID" />
+          <s:element minOccurs="0" maxOccurs="1" name="reqMsgID" type="s1:MsgID" />
+          <s:element minOccurs="1" maxOccurs="1" name="respDateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="dispHeader" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="operatorMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="custMsg" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Tax" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="amt" type="s1:Currency" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VAT">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:Tax">
+            <s:attribute name="rate" type="s:decimal" use="required" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AdviceResp" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="adviceReqMsgID" type="s1:MsgID" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ConfirmationAdviceResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:AdviceResp">
+            <s:attribute name="txConfirmed" type="s:boolean" use="required" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReversalAdviceResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:AdviceResp">
+            <s:attribute name="txReversed" type="s:boolean" use="required" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LastRespAdviceResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:AdviceResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="lastResponse" type="s1:BaseResp" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MakeMerchantDepositResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseResp">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="DepositSuccessful" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="TransactionReference" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GetVendingServerStateResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="serverState" type="s1:ServerState" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ServerState" abstract="true" />
+      <s:complexType name="PingServerState">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:ServerState">
+            <s:attribute name="roundTripTime" type="s:int" use="required" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PingAndActivityServerState">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:PingServerState">
+            <s:attribute name="activityTime" type="s:int" use="required" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SilentServerState">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:ServerState" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="UnknownServerState">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:ServerState" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustAccountDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="accountStatus" type="s1:ArrayOfAccountStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAccountStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AccountStatus" nillable="true" type="s1:AccountStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AccountStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="accountIdentification" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="accountName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="accountBalance" type="s1:Currency" />
+          <s:element minOccurs="0" maxOccurs="1" name="minimumPayment" type="s1:Currency" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BaseVendResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="clientStatus" type="s1:ClientStatus" />
+              <s:element minOccurs="0" maxOccurs="1" name="utility" type="s1:UtilityDetail" />
+              <s:element minOccurs="0" maxOccurs="1" name="vendor" type="s1:VendorDetail" />
+              <s:element minOccurs="0" maxOccurs="1" name="custVendDetail" type="s1:CustVendDetail" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ClientStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="availCredit" type="s1:Currency" />
+          <s:element minOccurs="0" maxOccurs="1" name="batchStatus" type="s1:BatchStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BatchStatus">
+        <s:attribute name="banking" type="s1:BatchStatusType" use="required" />
+        <s:attribute name="sales" type="s1:BatchStatusType" use="required" />
+        <s:attribute name="shift" type="s1:BatchStatusType" use="required" />
+      </s:complexType>
+      <s:simpleType name="BatchStatusType">
+        <s:restriction base="s:string">
+          <s:enumeration value="open" />
+          <s:enumeration value="closed" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="UtilityDetail">
+        <s:attribute name="name" type="s:string" />
+        <s:attribute name="address" type="s:string" />
+        <s:attribute name="taxRef" type="s:string" />
+      </s:complexType>
+      <s:complexType name="VendorDetail">
+        <s:attribute name="name" type="s:string" />
+        <s:attribute name="address" type="s:string" />
+      </s:complexType>
+      <s:complexType name="CreditTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MeterSpecificTokenIssue">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="units" type="s1:Units" />
+              <s:element minOccurs="0" maxOccurs="1" name="resource" type="s1:Resource" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MeterSpecificTokenIssue" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="meterDetail" type="s1:MeterDetail" />
+          <s:element minOccurs="0" maxOccurs="1" name="token" type="s1:Token" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MeterSpecificEngTokenIssue" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MeterSpecificTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ClearTamperTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MeterSpecificEngTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="WaterFactorTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MeterSpecificEngTokenIssue">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="waterFactor" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="KCTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MeterSpecificEngTokenIssue">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="kctData" type="s1:KCTData" />
+              <s:element minOccurs="0" maxOccurs="1" name="pwrLmtToken" type="s1:PwrLmtTokenIssue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PwrLmtTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MeterSpecificEngTokenIssue">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="pwrLmt" type="s1:PwrLmt" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PhUnbalTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MeterSpecificEngTokenIssue">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="pwrLmt" type="s1:PwrLmt" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ClearCreditTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MeterSpecificEngTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MCTCredTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:CreditTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="FreeCredTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:CreditTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SaleCredTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:CreditTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="FBECredTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:CreditTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Tariff">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TariffSetID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SGC" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TokenInfo" abstract="true" />
+      <s:complexType name="STS1TokenInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:TokenInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="tokenID" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="transferAmt" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="tokenClass" type="s1:TokenSubClassType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TokenSubClassType">
+        <s:sequence>
+          <s:choice minOccurs="1" maxOccurs="1">
+            <s:element minOccurs="1" maxOccurs="1" name="nonMeterManagement" type="s1:NonMeterSpecificEng" />
+            <s:element minOccurs="1" maxOccurs="1" name="credit" type="s1:CreditTokenSubClassType" />
+            <s:element minOccurs="1" maxOccurs="1" name="meterManagement" type="s1:MeterSpecificEng" />
+          </s:choice>
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="NonMeterSpecificEng">
+        <s:restriction base="s:string">
+          <s:enumeration value="TestAll" />
+          <s:enumeration value="TestBreaker" />
+          <s:enumeration value="TestDisp" />
+          <s:enumeration value="DispPwrLmt" />
+          <s:enumeration value="DispTI" />
+          <s:enumeration value="DispKRN" />
+          <s:enumeration value="DispTamper" />
+          <s:enumeration value="DispInstPwr" />
+          <s:enumeration value="DispConsTot" />
+          <s:enumeration value="DispUnbalance" />
+          <s:enumeration value="DispVer" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="CreditTokenSubClassType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Electricity Token" />
+          <s:enumeration value="Water Token" />
+          <s:enumeration value="Gas Token" />
+          <s:enumeration value="Connection time Token" />
+          <s:enumeration value="Currency Token" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="MeterSpecificEng">
+        <s:restriction base="s:string">
+          <s:enumeration value="SetPwrLmt" />
+          <s:enumeration value="SetPhUnbalance" />
+          <s:enumeration value="AddDefaultCred" />
+          <s:enumeration value="ClearCred" />
+          <s:enumeration value="ClearTamper" />
+          <s:enumeration value="EngKCT" />
+          <s:enumeration value="SetWaterFact" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="XMLVendFaultResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="fault" type="s1:Fault" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Fault" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="XMLVendFaultEx" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:Fault" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReversalEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:XMLVendFaultEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="XMLVendSchemaEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:XMLVendFaultEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="UseCaseSupportEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:XMLVendFaultEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ClientIDSSLEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:XMLVendFaultEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LastResponseEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:XMLVendFaultEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ConfirmationEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:XMLVendFaultEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SystemEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:Fault" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BusinessRuleEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:Fault" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="VendorCreditEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RequestAuthorisationEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MSNOCheckDigitEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="FBEEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BlockedMeterEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ConfirmCustomerEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CancelEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CheckBatchTotalEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DebtEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EndBatchEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="InsufficientMeterDataEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReprintDepositSlipEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReprintEndBatchEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReprintEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RequireMeterCardEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StartBatchEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ServiceChrgEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="UnknownMeterEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="UnknownMeterUpdateMtrKeyEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="UpdateMtrKeySameEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="VerifyTokenEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ClientIDAuthorisationEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SGCAuthorisationEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LatestKRNEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="STSDataEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="adviceReq" type="s1:AdviceReq" />
+      <s:element name="adviceResp" type="s1:AdviceResp" />
+      <s:element name="vendingServerStateReq" type="s1:GetVendingServerStateReq" />
+      <s:element name="getVendingServerStateResp" type="s1:GetVendingServerStateResp" />
+      <s:element name="makeMerchantDepositReq" type="s1:MakeMerchantDepositReq" />
+      <s:element name="makeMerchantDeposit" type="s1:MakeMerchantDepositResp" />
+      <s:element name="reverseMerchantDepositReq" type="s1:ReverseMerchantDepositReq" />
+      <s:complexType name="ReverseMerchantDepositReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DepositReferenceNumber" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="reverseMerchantDeposit" type="s1:ReverseMerchantDepositResp" />
+      <s:complexType name="ReverseMerchantDepositResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseResp">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="DepositSuccessful" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="TransactionReference" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.nrs.eskom.co.za/xmlvend/revenue/2.1/schema">
+      <s:import namespace="http://www.nrs.eskom.co.za/xmlvend/base/2.1/schema" />
+      <s:import namespace="http://www.conlog.co.za/xmlvend/base-ext/2.1.1/schema" />
+      <s:complexType name="ConfirmCustomerReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="idMethod" type="s1:IDMethod" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReprintReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="idMethod" type="s1:IDMethod" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PayAccReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="reqAmt" type="s1:Currency" />
+              <s:element minOccurs="0" maxOccurs="1" name="payType" type="s1:PayType" />
+              <s:element minOccurs="0" maxOccurs="1" name="payAccount" type="s2:PayAccount" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PayAccount">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idMethod" type="s1:IDMethod" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DebtRecovery">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PayAccount" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ServiceChrg">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PayAccount" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="VerifyReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="token" type="s1:Token" />
+              <s:element minOccurs="0" maxOccurs="1" name="idMethod" type="s1:VendIDMethod" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StartBatchReq" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StartSalesBatchReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:StartBatchReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StartBankBatchReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:StartBatchReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StartAllBatchesReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:StartBatchReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StartShiftBatchReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:StartBatchReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EndBatchReq" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EndShiftBatchReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:EndBatchReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EndBankBatchReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:EndBatchReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EndAllBatchesReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:EndBatchReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EndSalesBatchReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:EndBatchReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TotalBatchReq" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TotalAllBatchesReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:TotalBatchReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TotalShiftBatchReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:TotalBatchReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TotalSalesBatchReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:TotalBatchReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TotalBankBatchReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:TotalBatchReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="VendorStatementReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DepositReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReprintEndBatchReq" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReprintEndBankingBatchReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ReprintEndBatchReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="seqNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" default="true" name="all" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReprintEndShiftBatchReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ReprintEndBatchReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="seqNo" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReprintEndSalesBatchReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ReprintEndBatchReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="seqNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" default="true" name="all" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MeterCreditTransferReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseVendReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="chgOutUnits" type="s2:PurchaseValueUnits" />
+              <s:element minOccurs="0" maxOccurs="1" name="creditTransferDetail" type="s2:CreditTransferDetail" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PurchaseValueUnits">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PurchaseValue">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="units" type="s1:Units" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PurchaseValue" abstract="true" />
+      <s:complexType name="PurchaseValueCurrency">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PurchaseValue">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="amt" type="s1:Currency" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CreditTransferDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="oldMSNO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="refNo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FreeIssueReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseVendReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DocumentNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ReasonCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Units" type="s1:Units" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="FBEReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseVendReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AbstractCreditVendReq" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseVendReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="purchaseValue" type="s2:PurchaseValue" />
+              <s:element minOccurs="0" maxOccurs="1" name="payType" type="s1:PayType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CreditVendReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:AbstractCreditVendReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TrialCreditVendReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:AbstractCreditVendReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CancelVendReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseVendReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TransactionNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CDUID" type="s1:EANDeviceID" />
+              <s:element minOccurs="0" maxOccurs="1" name="CancellationReasonCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="token" type="s1:STS1Token" />
+              <s:element minOccurs="0" maxOccurs="1" name="DocumentNumber" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="AutoCancel" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="OriginalUniqueNumber" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CancelPendingReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CancelVendReq">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="adviceReqMsgID" type="s1:MsgID" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReprintDepositReq">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseReq" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReprintEndBatchResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="endBatchReprint" type="s2:EndBatchResp" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EndBatchResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="endBatch" type="s2:Batch" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Batch" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="started" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ended" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="batchTot" type="s1:Currency" />
+          <s:element minOccurs="0" maxOccurs="1" name="totTax" type="s1:Tax" />
+          <s:element minOccurs="0" maxOccurs="1" name="batchReport" type="s2:BatchReport" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BatchReport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="txTotal" type="s2:TxTotal" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="operatorTotal" type="s2:OperatorTotal" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="payTypeTotal" type="s2:PayTypeTotal" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="resTot" type="s2:ResourceTotal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TxTotal" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="amt" type="s1:Currency" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NormalSaleTotal">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:TxTotal" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CancellationTotal">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:TxTotal" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="FreeIssueTotal">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:TxTotal" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MeterCreditTransferTotal">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:TxTotal" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AccPaymentTotal">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:TxTotal" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ServiceChrgTotal">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:AccPaymentTotal" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DebtRecoveryTotal">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:AccPaymentTotal" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="OperatorTotal">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="opName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="amt" type="s1:Currency" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PayTypeTotal" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="amt" type="s1:Currency" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ChequeTotal">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PayTypeTotal" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="OtherTotal">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PayTypeTotal" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CashTotal">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PayTypeTotal" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CreditCardTotal">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PayTypeTotal" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DebitCardTotal">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PayTypeTotal" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ResourceTotal">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="units" type="s1:Units" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConnectionTimeTotal">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ResourceTotal" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ElectricityTotal">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ResourceTotal" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CurrencyTotal">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ResourceTotal" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="WaterTotal">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ResourceTotal" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GasTotal">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ResourceTotal" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BankBatch">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:Batch">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="firstSalesSeqNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="lastSalesSeqNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="depSlip" type="s2:DepositSlip" />
+              <s:element minOccurs="0" maxOccurs="unbounded" name="salesBatch" type="s2:SalesBatch" />
+            </s:sequence>
+            <s:attribute name="seqNo" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DepositSlip">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="header" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="amt" type="s1:Currency" />
+          <s:element minOccurs="0" maxOccurs="1" name="beneficiary" type="s2:Beneficiary" />
+        </s:sequence>
+        <s:attribute name="bankingRefNo" type="s:string" />
+      </s:complexType>
+      <s:complexType name="Beneficiary">
+        <s:attribute name="accName" type="s:string" />
+        <s:attribute name="accNo" type="s:string" />
+        <s:attribute name="branchCode" type="s:string" />
+        <s:attribute name="bankName" type="s:string" />
+        <s:attribute name="bankRegNo" type="s:string" />
+      </s:complexType>
+      <s:complexType name="SalesBatch">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:Batch">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="firstTxSeqNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="lastTxSeqNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="unbounded" name="shiftBatch" type="s2:ShiftBatch" />
+            </s:sequence>
+            <s:attribute name="seqNo" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ShiftBatch">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:Batch">
+            <s:attribute name="seqNo" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ConfirmCustomerResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="confirmCustResult" type="s2:ConfirmCustResult" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ConfirmCustResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="custVendDetail" type="s1:CustVendDetail" />
+          <s:element minOccurs="0" maxOccurs="1" name="custVendConfig" type="s2:CustVendConfig" />
+          <s:element minOccurs="0" maxOccurs="1" name="meterDetail" type="s1:MeterDetail" />
+          <s:element minOccurs="0" maxOccurs="1" name="custAccountDetail" type="s1:CustAccountDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CustVendConfig">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="canVend" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="fbeDue" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="maxVendAmt" type="s1:Currency" />
+          <s:element minOccurs="0" maxOccurs="1" name="minVendAmt" type="s1:Currency" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ReprintResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="reprint" type="s1:BaseVendResp" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PayAccResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseVendResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="payAccReceipt" type="s2:PayAccReceipt" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PayAccReceipt">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:Receipt">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="meterDetail" type="s1:MeterDetail" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Receipt" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="transactions" type="s2:Transactions" />
+        </s:sequence>
+        <s:attribute name="receiptNo" type="s:string" />
+      </s:complexType>
+      <s:complexType name="Transactions">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="tx" type="s2:Tx" />
+          <s:element minOccurs="0" maxOccurs="1" name="lessRound" type="s1:Currency" />
+          <s:element minOccurs="0" maxOccurs="1" name="tenderAmt" type="s1:Currency" />
+          <s:element minOccurs="0" maxOccurs="1" name="change" type="s1:Currency" />
+          <s:element minOccurs="0" maxOccurs="1" name="units" type="s1:Currency" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Tx" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="amt" type="s1:Currency" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="tax" type="s1:Tax" />
+        </s:sequence>
+        <s:attribute name="receiptNo" type="s:string" />
+      </s:complexType>
+      <s:complexType name="CreditVendTx">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:Tx">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="creditTokenIssue" type="s1:CreditTokenIssue" />
+              <s:element minOccurs="0" maxOccurs="1" name="tariff" type="s1:Tariff" />
+              <s:element minOccurs="0" maxOccurs="1" name="tariffBreakdown" type="s5:TariffBreakdown" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PayAccTx">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:Tx">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="accDesc" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="accNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="tariff" type="s1:Tariff" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DebtRecoveryTx">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PayAccTx">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="balance" type="s1:Currency" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ServiceChrgTx">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PayAccTx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CreditVendReceipt">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:Receipt" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MeterCreditTransferResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseVendResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="creditTransferDetail" type="s2:CreditTransferDetail" />
+              <s:element minOccurs="0" maxOccurs="1" name="creditTransferTx" type="s2:CreditVendTx" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="VerifyResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseVendResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="creditVendTx" type="s2:CreditVendTx" />
+              <s:element minOccurs="0" maxOccurs="1" name="tokenInfo" type="s1:TokenInfo" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CreditVendResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseVendResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="creditVendReceipt" type="s2:CreditVendReceipt" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="FBEResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CreditVendResp" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TrialCreditVendResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CreditVendResp" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="FreeIssueResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CreditVendResp" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CancelVendResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseVendResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="origTx" type="s2:CreditVendTx" />
+            </s:sequence>
+            <s:attribute name="cancelRefNo" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CancelPendingResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CancelVendResp" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StartBatchResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="startedBatch" type="s2:StartBatch" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StartBatch" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="started" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BankStartBatch">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:StartBatch">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="salesStartBatch" type="s2:SalesStartBatch" />
+            </s:sequence>
+            <s:attribute name="seqNo" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SalesStartBatch">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:StartBatch">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="shiftStartBatch" type="s2:ShiftStartBatch" />
+            </s:sequence>
+            <s:attribute name="seqNo" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ShiftStartBatch">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:StartBatch">
+            <s:attribute name="seqNo" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TotalBatchResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="totalBatch" type="s2:Batch" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="VendorStatementResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="statement" type="s2:VendorStatement" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="VendorStatement">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="accNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="accBal" type="s1:Currency" />
+          <s:element minOccurs="0" maxOccurs="1" name="availCredit" type="s1:Currency" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="lineItem" type="s2:VendorStatementLineItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VendorStatementLineItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="amt" type="s1:Currency" />
+          <s:element minOccurs="1" maxOccurs="1" name="appliedDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DepositResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="depSlip" type="s2:DepositSlip" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReprintDepositResp">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BaseResp">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="reprint" type="s2:DepositResp" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="creditVendReq" type="s2:CreditVendReq" />
+      <s:element name="creditVendResp" type="s2:CreditVendResp" />
+      <s:element name="fbeReq" type="s2:FBEReq" />
+      <s:element name="fbeResp" type="s2:FBEResp" />
+      <s:element name="trialCreditVendReq" type="s2:TrialCreditVendReq" />
+      <s:element name="trialCreditVendResp" type="s2:TrialCreditVendResp" />
+      <s:element name="meterCreditTransferReq" type="s2:MeterCreditTransferReq" />
+      <s:element name="meterCreditTransferResp" type="s2:MeterCreditTransferResp" />
+      <s:element name="freeIssueReq" type="s2:FreeIssueReq" />
+      <s:element name="freeIssueResp" type="s2:FreeIssueResp" />
+      <s:element name="cancelPendingReq" type="s2:CancelPendingReq" />
+      <s:element name="cancelPendingResp" type="s2:CancelPendingResp" />
+      <s:element name="confirmCustomerReq" type="s2:ConfirmCustomerReq" />
+      <s:element name="confirmCustomerResp" type="s2:ConfirmCustomerResp" />
+      <s:element name="reprintReq" type="s2:ReprintReq" />
+      <s:element name="reprintResp" type="s2:ReprintResp" />
+      <s:element name="cancelVendReq" type="s2:CancelVendReq" />
+      <s:element name="cancelVendResp" type="s2:CancelVendResp" />
+      <s:element name="verifyReq" type="s2:VerifyReq" />
+      <s:element name="verifyResp" type="s2:VerifyResp" />
+      <s:element name="payAccReq" type="s2:PayAccReq" />
+      <s:element name="payAccResp" type="s2:PayAccResp" />
+      <s:element name="vendorStatementReq" type="s2:VendorStatementReq" />
+      <s:element name="vendorStatementResp" type="s2:VendorStatementResp" />
+      <s:element name="depositReq" type="s2:DepositReq" />
+      <s:element name="depositResp" type="s2:DepositResp" />
+      <s:element name="reprintDepReq" type="s2:ReprintDepositReq" />
+      <s:element name="reprintDepResp" type="s2:ReprintDepositResp" />
+      <s:element name="reprintEndBatchReq" type="s2:ReprintEndBatchReq" />
+      <s:element name="reprintEndBatchResp" type="s2:ReprintEndBatchResp" />
+      <s:element name="startBatchReq" type="s2:StartBatchReq" />
+      <s:element name="startBatchResp" type="s2:StartBatchResp" />
+      <s:element name="endBatchReq" type="s2:EndBatchReq" />
+      <s:element name="endBatchResp" type="s2:EndBatchResp" />
+      <s:element name="totalBatchReq" type="s2:TotalBatchReq" />
+      <s:element name="totalBatchResp" type="s2:TotalBatchResp" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.eskom.co.za/xmlvend/revenue-ext/2.1/schema">
+      <s:import namespace="http://www.nrs.eskom.co.za/xmlvend/revenue/2.1/schema" />
+      <s:complexType name="Upgrade">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PayAccount" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Tamper">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PayAccount" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Connection">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PayAccount" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Conversion">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PayAccount" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TamperTx">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PayAccTx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ConnectionTx">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PayAccTx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="UpgradeTx">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PayAccTx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ConversionTx">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PayAccTx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CredLmtChg">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:VendorStatementLineItem">
+            <s:attribute name="ref" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CredUpdate" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:VendorStatementLineItem" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DepositCreditUpdate">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:CredUpdate">
+            <s:attribute name="depositRefNo" type="s:string" />
+            <s:attribute name="depositDate" type="s:dateTime" use="required" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ManualAdjCreditUpdate">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:CredUpdate">
+            <s:attribute name="ref" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.eskom.co.za/xmlvend/meter-ext/2.1/schema">
+      <s:import namespace="http://www.nrs.eskom.co.za/xmlvend/meter/2.1/schema" />
+      <s:complexType name="DeviceFault" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:MeterFaultReport" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="NoTrip">
+        <s:complexContent mixed="false">
+          <s:extension base="s4:DeviceFault" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DisplayLightsButtons">
+        <s:complexContent mixed="false">
+          <s:extension base="s4:DeviceFault" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SeriousBoxDamage">
+        <s:complexContent mixed="false">
+          <s:extension base="s4:DeviceFault" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="FireWaterDamage">
+        <s:complexContent mixed="false">
+          <s:extension base="s4:DeviceFault" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MeterDead">
+        <s:complexContent mixed="false">
+          <s:extension base="s4:DeviceFault" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="KeepsTripping">
+        <s:complexContent mixed="false">
+          <s:extension base="s4:DeviceFault" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TokensNotWorking">
+        <s:complexContent mixed="false">
+          <s:extension base="s4:DeviceFault" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DataFault" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:MeterFaultReport" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="IncorrectTI">
+        <s:complexContent mixed="false">
+          <s:extension base="s4:DataFault" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RecordMissing">
+        <s:complexContent mixed="false">
+          <s:extension base="s4:DataFault">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="reason" type="s4:RecordMissingReason" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RecordMissingReason" abstract="true" />
+      <s:complexType name="ConvertedFrmConventional">
+        <s:complexContent mixed="false">
+          <s:extension base="s4:RecordMissingReason" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MeterChangedOut">
+        <s:complexContent mixed="false">
+          <s:extension base="s4:RecordMissingReason" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="NewInstallation">
+        <s:complexContent mixed="false">
+          <s:extension base="s4:RecordMissingReason" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="IncorrectSGC">
+        <s:complexContent mixed="false">
+          <s:extension base="s4:DataFault" />
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.conlog.co.za/xmlvend/base-ext/2.1.1/schema">
+      <s:import namespace="http://www.nrs.eskom.co.za/xmlvend/base/2.1/schema" />
+      <s:complexType name="TokenDeliveryMethod" abstract="true" />
+      <s:complexType name="AMRTokenDeliveryMethod">
+        <s:complexContent mixed="false">
+          <s:extension base="s5:TokenDeliveryMethod" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TariffBreakdown" abstract="true" />
+      <s:complexType name="StepTariffBreakdown">
+        <s:complexContent mixed="false">
+          <s:extension base="s5:TariffBreakdown">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="steps" type="s5:ArrayOfStep" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfStep">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Step" nillable="true" type="s5:Step" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Step">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="units" type="s1:Units" />
+          <s:element minOccurs="0" maxOccurs="1" name="rate" type="s1:Currency" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StraightTariffBreakdown">
+        <s:complexContent mixed="false">
+          <s:extension base="s5:TariffBreakdown">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="rate" type="s1:Currency" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.eskom.co.za/xmlvend/base-ext/2.1.1/schema">
+      <s:import namespace="http://www.nrs.eskom.co.za/xmlvend/base/2.1/schema" />
+      <s:complexType name="OverRecCredTokenIssue">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:CreditTokenIssue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ServeryBusyEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:SystemEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ExpiredMessageEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:SystemEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AccNumEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DuplicateMsgIDEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GracePurchaseEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="OtherDataEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MeterDataMisMatchEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="UnknownMeterFBEEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="IndeterminantLastResponseEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AccTypeEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AccNumMeterLinkEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EngParameterEx">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:BusinessRuleEx" />
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ConfirmMeterRequestSoapIn">
+    <wsdl:part name="confirmMeterReq" element="s0:confirmMeterReq" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmMeterRequestSoapOut">
+    <wsdl:part name="ConfirmMeterRequestResult" element="s0:confirmMeterResp" />
+  </wsdl:message>
+  <wsdl:message name="CreditVendRequestSoapIn">
+    <wsdl:part name="creditVendReq" element="s2:creditVendReq" />
+  </wsdl:message>
+  <wsdl:message name="CreditVendRequestSoapOut">
+    <wsdl:part name="CreditVendRequestResult" element="s2:creditVendResp" />
+  </wsdl:message>
+  <wsdl:message name="FBERequestSoapIn">
+    <wsdl:part name="fbeReq" element="s2:fbeReq" />
+  </wsdl:message>
+  <wsdl:message name="FBERequestSoapOut">
+    <wsdl:part name="FBERequestResult" element="s2:fbeResp" />
+  </wsdl:message>
+  <wsdl:message name="TrialCreditVendRequestSoapIn">
+    <wsdl:part name="trialCreditVendReq" element="s2:trialCreditVendReq" />
+  </wsdl:message>
+  <wsdl:message name="TrialCreditVendRequestSoapOut">
+    <wsdl:part name="TrialCreditVendRequestResult" element="s2:trialCreditVendResp" />
+  </wsdl:message>
+  <wsdl:message name="MeterCreditTransferRequestSoapIn">
+    <wsdl:part name="meterCreditTransferReq" element="s2:meterCreditTransferReq" />
+  </wsdl:message>
+  <wsdl:message name="MeterCreditTransferRequestSoapOut">
+    <wsdl:part name="MeterCreditTransferRequestResult" element="s2:meterCreditTransferResp" />
+  </wsdl:message>
+  <wsdl:message name="FreeIssueRequestSoapIn">
+    <wsdl:part name="freeIssueReq" element="s2:freeIssueReq" />
+  </wsdl:message>
+  <wsdl:message name="FreeIssueRequestSoapOut">
+    <wsdl:part name="FreeIssueRequestResult" element="s2:freeIssueResp" />
+  </wsdl:message>
+  <wsdl:message name="CancelPendingRequestSoapIn">
+    <wsdl:part name="cancelPendingReq" element="s2:cancelPendingReq" />
+  </wsdl:message>
+  <wsdl:message name="CancelPendingRequestSoapOut">
+    <wsdl:part name="CancelPendingRequestResult" element="s2:cancelPendingResp" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmCustomerRequestSoapIn">
+    <wsdl:part name="confirmCustomerReq" element="s2:confirmCustomerReq" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmCustomerRequestSoapOut">
+    <wsdl:part name="ConfirmCustomerRequestResult" element="s2:confirmCustomerResp" />
+  </wsdl:message>
+  <wsdl:message name="ReprintRequestSoapIn">
+    <wsdl:part name="reprintReq" element="s2:reprintReq" />
+  </wsdl:message>
+  <wsdl:message name="ReprintRequestSoapOut">
+    <wsdl:part name="ReprintRequestResult" element="s2:reprintResp" />
+  </wsdl:message>
+  <wsdl:message name="CancelVendRequestSoapIn">
+    <wsdl:part name="cancelVendReq" element="s2:cancelVendReq" />
+  </wsdl:message>
+  <wsdl:message name="CancelVendRequestSoapOut">
+    <wsdl:part name="CancelVendRequestResult" element="s2:cancelVendResp" />
+  </wsdl:message>
+  <wsdl:message name="VerifyRequestSoapIn">
+    <wsdl:part name="verifyReq" element="s2:verifyReq" />
+  </wsdl:message>
+  <wsdl:message name="VerifyRequestSoapOut">
+    <wsdl:part name="VerifyRequestResult" element="s2:verifyResp" />
+  </wsdl:message>
+  <wsdl:message name="PayAccountRequestSoapIn">
+    <wsdl:part name="payAccReq" element="s2:payAccReq" />
+  </wsdl:message>
+  <wsdl:message name="PayAccountRequestSoapOut">
+    <wsdl:part name="PayAccountRequestResult" element="s2:payAccResp" />
+  </wsdl:message>
+  <wsdl:message name="CustReportFaultRequestSoapIn">
+    <wsdl:part name="custReportFaultReq" element="s0:custReportFaultReq" />
+  </wsdl:message>
+  <wsdl:message name="CustReportFaultRequestSoapOut">
+    <wsdl:part name="CustReportFaultRequestResult" element="s0:custReportFaultResp" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMeterKeyRequestSoapIn">
+    <wsdl:part name="updateMeterKeyReq" element="s0:updateMeterKeyReq" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMeterKeyRequestSoapOut">
+    <wsdl:part name="UpdateMeterKeyRequestResult" element="s0:updateMeterKeyResp" />
+  </wsdl:message>
+  <wsdl:message name="VendorStatementRequestSoapIn">
+    <wsdl:part name="vendorStatementReq" element="s2:vendorStatementReq" />
+  </wsdl:message>
+  <wsdl:message name="VendorStatementRequestSoapOut">
+    <wsdl:part name="VendorStatementRequestResult" element="s2:vendorStatementResp" />
+  </wsdl:message>
+  <wsdl:message name="DepositSlipRequestSoapIn">
+    <wsdl:part name="depositReq" element="s2:depositReq" />
+  </wsdl:message>
+  <wsdl:message name="DepositSlipRequestSoapOut">
+    <wsdl:part name="DepositSlipRequestResult" element="s2:depositResp" />
+  </wsdl:message>
+  <wsdl:message name="ReprintDepositSlipRequestSoapIn">
+    <wsdl:part name="reprintDepReq" element="s2:reprintDepReq" />
+  </wsdl:message>
+  <wsdl:message name="ReprintDepositSlipRequestSoapOut">
+    <wsdl:part name="ReprintDepositSlipRequestResult" element="s2:reprintDepResp" />
+  </wsdl:message>
+  <wsdl:message name="ReprintEndBatchRequestSoapIn">
+    <wsdl:part name="reprintEndBatchReq" element="s2:reprintEndBatchReq" />
+  </wsdl:message>
+  <wsdl:message name="ReprintEndBatchRequestSoapOut">
+    <wsdl:part name="ReprintEndBatchRequestResult" element="s2:reprintEndBatchResp" />
+  </wsdl:message>
+  <wsdl:message name="NonMeterSpecificEngRequestSoapIn">
+    <wsdl:part name="nonMeterSpecificEngReq" element="s0:nonMeterSpecificEngReq" />
+  </wsdl:message>
+  <wsdl:message name="NonMeterSpecificEngRequestSoapOut">
+    <wsdl:part name="NonMeterSpecificEngRequestResult" element="s0:nonMeterSpecificEngResp" />
+  </wsdl:message>
+  <wsdl:message name="MeterSpecificEngRequestSoapIn">
+    <wsdl:part name="meterSpecificEngReq" element="s0:meterSpecificEngReq" />
+  </wsdl:message>
+  <wsdl:message name="MeterSpecificEngRequestSoapOut">
+    <wsdl:part name="MeterSpecificEngRequestResult" element="s0:meterSpecificEngResp" />
+  </wsdl:message>
+  <wsdl:message name="AdviceRequestSoapIn">
+    <wsdl:part name="adviceReq" element="s1:adviceReq" />
+  </wsdl:message>
+  <wsdl:message name="AdviceRequestSoapOut">
+    <wsdl:part name="AdviceRequestResult" element="s1:adviceResp" />
+  </wsdl:message>
+  <wsdl:message name="StartBatchRequestSoapIn">
+    <wsdl:part name="startBatchReq" element="s2:startBatchReq" />
+  </wsdl:message>
+  <wsdl:message name="StartBatchRequestSoapOut">
+    <wsdl:part name="StartBatchRequestResult" element="s2:startBatchResp" />
+  </wsdl:message>
+  <wsdl:message name="EndBatchRequestSoapIn">
+    <wsdl:part name="endBatchReq" element="s2:endBatchReq" />
+  </wsdl:message>
+  <wsdl:message name="EndBatchRequestSoapOut">
+    <wsdl:part name="EndBatchRequestResult" element="s2:endBatchResp" />
+  </wsdl:message>
+  <wsdl:message name="TotalBatchRequestSoapIn">
+    <wsdl:part name="totalBatchReq" element="s2:totalBatchReq" />
+  </wsdl:message>
+  <wsdl:message name="TotalBatchRequestSoapOut">
+    <wsdl:part name="TotalBatchRequestResult" element="s2:totalBatchResp" />
+  </wsdl:message>
+  <wsdl:message name="GetVendingServerStateRequestSoapIn">
+    <wsdl:part name="vendingServerStateReq" element="s1:vendingServerStateReq" />
+  </wsdl:message>
+  <wsdl:message name="GetVendingServerStateRequestSoapOut">
+    <wsdl:part name="GetVendingServerStateRequestResult" element="s1:getVendingServerStateResp" />
+  </wsdl:message>
+  <wsdl:message name="MakeMerchantDepositSoapIn">
+    <wsdl:part name="makeMerchantDepositReq" element="s1:makeMerchantDepositReq" />
+  </wsdl:message>
+  <wsdl:message name="MakeMerchantDepositSoapOut">
+    <wsdl:part name="MakeMerchantDepositResult" element="s1:makeMerchantDeposit" />
+  </wsdl:message>
+  <wsdl:message name="ReverseMerchantDepositSoapIn">
+    <wsdl:part name="reverseMerchantDepositReq" element="s1:reverseMerchantDepositReq" />
+  </wsdl:message>
+  <wsdl:message name="ReverseMerchantDepositSoapOut">
+    <wsdl:part name="ReverseMerchantDepositResult" element="s1:reverseMerchantDeposit" />
+  </wsdl:message>
+  <wsdl:portType name="XMLVendServiceSoap">
+    <wsdl:operation name="ConfirmMeterRequest">
+      <wsdl:input message="tns:ConfirmMeterRequestSoapIn" />
+      <wsdl:output message="tns:ConfirmMeterRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreditVendRequest">
+      <wsdl:input message="tns:CreditVendRequestSoapIn" />
+      <wsdl:output message="tns:CreditVendRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FBERequest">
+      <wsdl:input message="tns:FBERequestSoapIn" />
+      <wsdl:output message="tns:FBERequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TrialCreditVendRequest">
+      <wsdl:input message="tns:TrialCreditVendRequestSoapIn" />
+      <wsdl:output message="tns:TrialCreditVendRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MeterCreditTransferRequest">
+      <wsdl:input message="tns:MeterCreditTransferRequestSoapIn" />
+      <wsdl:output message="tns:MeterCreditTransferRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FreeIssueRequest">
+      <wsdl:input message="tns:FreeIssueRequestSoapIn" />
+      <wsdl:output message="tns:FreeIssueRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelPendingRequest">
+      <wsdl:input message="tns:CancelPendingRequestSoapIn" />
+      <wsdl:output message="tns:CancelPendingRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmCustomerRequest">
+      <wsdl:input message="tns:ConfirmCustomerRequestSoapIn" />
+      <wsdl:output message="tns:ConfirmCustomerRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReprintRequest">
+      <wsdl:input message="tns:ReprintRequestSoapIn" />
+      <wsdl:output message="tns:ReprintRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelVendRequest">
+      <wsdl:input message="tns:CancelVendRequestSoapIn" />
+      <wsdl:output message="tns:CancelVendRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyRequest">
+      <wsdl:input message="tns:VerifyRequestSoapIn" />
+      <wsdl:output message="tns:VerifyRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayAccountRequest">
+      <wsdl:input message="tns:PayAccountRequestSoapIn" />
+      <wsdl:output message="tns:PayAccountRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CustReportFaultRequest">
+      <wsdl:input message="tns:CustReportFaultRequestSoapIn" />
+      <wsdl:output message="tns:CustReportFaultRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMeterKeyRequest">
+      <wsdl:input message="tns:UpdateMeterKeyRequestSoapIn" />
+      <wsdl:output message="tns:UpdateMeterKeyRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VendorStatementRequest">
+      <wsdl:input message="tns:VendorStatementRequestSoapIn" />
+      <wsdl:output message="tns:VendorStatementRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DepositSlipRequest">
+      <wsdl:input message="tns:DepositSlipRequestSoapIn" />
+      <wsdl:output message="tns:DepositSlipRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReprintDepositSlipRequest">
+      <wsdl:input message="tns:ReprintDepositSlipRequestSoapIn" />
+      <wsdl:output message="tns:ReprintDepositSlipRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReprintEndBatchRequest">
+      <wsdl:input message="tns:ReprintEndBatchRequestSoapIn" />
+      <wsdl:output message="tns:ReprintEndBatchRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NonMeterSpecificEngRequest">
+      <wsdl:input message="tns:NonMeterSpecificEngRequestSoapIn" />
+      <wsdl:output message="tns:NonMeterSpecificEngRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MeterSpecificEngRequest">
+      <wsdl:input message="tns:MeterSpecificEngRequestSoapIn" />
+      <wsdl:output message="tns:MeterSpecificEngRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdviceRequest">
+      <wsdl:input message="tns:AdviceRequestSoapIn" />
+      <wsdl:output message="tns:AdviceRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartBatchRequest">
+      <wsdl:input message="tns:StartBatchRequestSoapIn" />
+      <wsdl:output message="tns:StartBatchRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EndBatchRequest">
+      <wsdl:input message="tns:EndBatchRequestSoapIn" />
+      <wsdl:output message="tns:EndBatchRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TotalBatchRequest">
+      <wsdl:input message="tns:TotalBatchRequestSoapIn" />
+      <wsdl:output message="tns:TotalBatchRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVendingServerStateRequest">
+      <wsdl:input message="tns:GetVendingServerStateRequestSoapIn" />
+      <wsdl:output message="tns:GetVendingServerStateRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeMerchantDeposit">
+      <wsdl:input message="tns:MakeMerchantDepositSoapIn" />
+      <wsdl:output message="tns:MakeMerchantDepositSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReverseMerchantDeposit">
+      <wsdl:input message="tns:ReverseMerchantDepositSoapIn" />
+      <wsdl:output message="tns:ReverseMerchantDepositSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="XMLVendServiceSoap" type="tns:XMLVendServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConfirmMeterRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditVendRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FBERequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TrialCreditVendRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MeterCreditTransferRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FreeIssueRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelPendingRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmCustomerRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReprintRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelVendRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayAccountRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustReportFaultRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMeterKeyRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VendorStatementRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DepositSlipRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReprintDepositSlipRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReprintEndBatchRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NonMeterSpecificEngRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MeterSpecificEngRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdviceRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartBatchRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndBatchRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TotalBatchRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVendingServerStateRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeMerchantDeposit">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReverseMerchantDeposit">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="XMLVendServiceSoap1" type="tns:XMLVendServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConfirmMeterRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditVendRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FBERequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TrialCreditVendRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MeterCreditTransferRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FreeIssueRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelPendingRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmCustomerRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReprintRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelVendRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayAccountRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustReportFaultRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMeterKeyRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VendorStatementRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DepositSlipRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReprintDepositSlipRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReprintEndBatchRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NonMeterSpecificEngRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MeterSpecificEngRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdviceRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartBatchRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndBatchRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TotalBatchRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVendingServerStateRequest">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeMerchantDeposit">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReverseMerchantDeposit">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="XMLVendService">
+    <wsdl:port name="XMLVendServiceSoap" binding="tns:XMLVendServiceSoap">
+      <soap:address location="http://10.200.220.7:17300/GatewayServiceASP.asmx" />
+    </wsdl:port>
+    <wsdl:port name="XMLVendServiceSoap1" binding="tns:XMLVendServiceSoap1">
+      <soap12:address location="http://10.200.220.7:17300/GatewayServiceASP.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

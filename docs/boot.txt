@@ -1,0 +1,37 @@
+Loading order:
+
+1. puma loads config.ru:
+  - set cors and static rack middlewares
+  - set logger
+  - require webpay (2)
+  - run (3)
+
+2. config.ru loads webpay.rb
+  - require roda
+  - require sequel
+
+  - require oj => Oj.mimic_JSON
+  - require dotenv => Dotenv.load
+
+  - require './utils'
+  - require './env/environment'
+  - require './models'
+  - require './mailer'
+
+  - require './lib/gateway'
+  - require './lib/periodic_cron_task'
+  - require './lib/importers'
+
+  - require './plugins/jwt'
+
+3. WebPay < Roda init
+  - plugin :json
+  - plugin :json_parser
+  - plugin :symbolized_params
+  - plugin :pass
+  - plugin :default_headers, $default_headers
+  - plugin :placeholder_string_matchers
+  - plugin :multi_route => load routes folder
+  - plugin :environments => load env settings
+  - plugin :module_include => include custom request/response methods
+  - plugin :hooks => instrument request

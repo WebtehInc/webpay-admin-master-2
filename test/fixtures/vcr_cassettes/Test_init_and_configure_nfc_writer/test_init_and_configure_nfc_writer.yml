@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://tpsb-switch:17403/merchant/v1.0/create-or-update-terminal
+    body:
+      encoding: UTF-8
+      string: '{"authenticity_token":"NFCWriter:u4fl3q3ryv","secret":"R3kqEeqdkMB3mSPIapAqKMXCr4wiW1iCTsjMpf6FzXkBpa+/b8QDbSTJWj+R4jhu6S4fhl1xqcDY2tprorhBIg==","name":"NFCWriter
+        u4fl3q3ryv","tid":"u4fl3q3ryv","mid":"NFCWriter","attended":true,"location_indicator":"merchant","load_balancer":"NullBalancer","installment_options":"NullInstallments","generate_tmk":true,"transport_key":"tmk_test","terminal_status":"active","random":"k5lsnPjrS5knfdZGr95O2Q=="}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - 'InfoSwitch-HMAC-SHA512-fixed 3310ba26f3de7caa793c4e41c0537561e27a8af4c000525de9df28a6f128a22b0e6c4a882a5ffcff7d90d11075784cc5b14e6ced0a604f085082d4eafaf71310
+        1a450c8dc5e9c8c7f37ab264519b112050b9c281237dc1a23ed63675d27bfae478cf3d8af178d3e7df4d9d6751ab61521614f74ffce028671ddc8eb4b8a92da6 '
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json
+      connection:
+      - close
+      content-length:
+      - '774'
+    body:
+      encoding: UTF-8
+      string: '{"status":"updated","terminal_id":7,"authenticity_token":"NFCWriter:u4fl3q3ryv","terminal_parameters":{"pos_transport_key":"tmk_test"},"load_balancer":"NullBalancer","default_acquirer_logid":null,"installment_options":"NullInstallments","terminal_status":"active","created_at":"2017-02-21
+        07:37:39 -0400","updated_at":"2019-08-13 10:16:13 -0400","version":10,"tmk":"SEExEPcBVfhqQnfBIdPVtkhBMRD3AVX4","tmk_kcv":"eb25d2","tacqs":{"xml-sim":{"logid":"xml-sim","acquirer_logid":"xml-sim","tid":"3141592","mid":"31415926535898","name":"XML-SIM
+        Test Shop","city":"Willemstad","address":"Otrobanda 3141","country":"CW","mcc":"5411","postal_code":"4797","status":"no-change","created_at":"2017-02-21
+        07:37:39 -0400","updated_at":"2019-08-13 11:45:48 -0400","tacq_status":"active"}}}'
+    http_version: 
+  recorded_at: Tue, 13 Aug 2019 14:16:13 GMT
+- request:
+    method: post
+    uri: http://tpsb-switch:17403/api/v1.0/configure-terminal
+    body:
+      encoding: UTF-8
+      string: '{"__authenticity_token":"NFCWriter:u4fl3q3ryv","random":"VxFM5HzCs/2M4mnKpeKJHA==","application_version":"Webpay","authenticity_token":"NFCWriter:u4fl3q3ryv"}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - 'InfoSwitch-HMAC-SHA512-fixed NFCWriter:u4fl3q3ryv ab4d06d3b1bdeb2907ef7b82cea55c09ed0a27c734de7313ef2d24a166bfefd205fec5840c3e0996e6a553c90bee67dafebc91ab4a95cfa54ec66439faaddc3f '
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json
+      connection:
+      - close
+      content-length:
+      - '362'
+    body:
+      encoding: UTF-8
+      string: '{"version":10,"pin_key":"pzjyzWReQUjOU2wUqo7QzKc48s1kXkFI","pin_key_kcv":"09f1ae","data_key":"6KfBdEssTcd9k8xwSkJfMOinwXRLLE3H","data_key_kcv":"ab3537","mac_key":"Wchs/yxYQIucWbwV7CU6u1nIbP8sWECL","mac_key_kcv":"e4995c","terminal_parameters":{"pos_tmk":"SEExEPcBVfhqQnfBIdPVtkhBMRD3AVX4","pos_transport_key":"tmk_test"},"server_time":"2019-08-13
+        10:18:49 -0400"}'
+    http_version: 
+  recorded_at: Tue, 13 Aug 2019 14:18:49 GMT
+recorded_with: VCR 4.0.0

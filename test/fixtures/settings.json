@@ -1,0 +1,17 @@
+[{
+"name":"voucher_low_stock_alert_emails",
+"title":"Voucher low stock alert emails",
+"value":["low-stock-test@webteh.us"],
+"type":"Array",
+"category":"Alerts",
+"description":"Emails where low stock alerts are sent"
+},
+
+{
+"name":"email_from_address",
+"title":"Email from address",
+"value":["webpay-test@webteh.us"],
+"type":"String",
+"category":"Email",
+"description":"Address from which emails to clients are sent"
+}]
