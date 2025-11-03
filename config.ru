@@ -1,6 +1,10 @@
 require 'rack'
 require 'rack/cors'
 
+# load env settings from file
+require 'dotenv'
+Dotenv.load
+
 # set secure headers
 require_relative "secure_headers"
 use Rack::SecureHeaders
@@ -8,7 +12,7 @@ use Rack::SecureHeaders
 # set CORS
 use Rack::Cors do
   allow do
-    origins ENV["WP_SPA_HOST_URL"].chomp('#!').to_s
+    origins ENV["WP_SPA_HOST_URL"].chomp('#').chomp('/').to_s
     resource '*', :headers => :any, :methods => [:get, :post, :options, :put, :patch], :expose  => ['X-total-count', 'X-per-page']
   end
 end

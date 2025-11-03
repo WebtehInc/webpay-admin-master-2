@@ -44,12 +44,12 @@ class ImporterTest < Test
   # [20:12:35] Damir Roso: 10-tak assertova
   def mock_transactions_for_POS_exports(options = {})
     terminal = Terminal.create
-    @op1 = Operator.create(code: 'op1', name: 'Operator 1', type: 'bill', currency: 'ANG')
-    @op2 = Operator.create(code: 'op2', name: 'Operator 2', type: 'bill', currency: 'ANG')
+    @op1 = Operator.create(code: 'op1', name: 'Operator 1', type: 'bill', currency: 'XCG')
+    @op2 = Operator.create(code: 'op2', name: 'Operator 2', type: 'bill', currency: 'XCG')
 
-    @acc1 = Account.create(type: 'business', title: 'Simple business account 1', account_number: '12345', currency: 'ANG', merchant_name: 'Merchant 1')
-    @acc2 = Account.create(type: 'business', title: 'Simple business account 2', account_number: '54321', currency: 'ANG', merchant_name: 'Merchant 2')
-    @acc3 = Account.create(type: 'business', title: 'Simple business account 3', account_number: '99999', currency: 'ANG', merchant_name: 'Merchant with no Transactions inc.')
+    @acc1 = Account.create(type: 'business', title: 'Simple business account 1', account_number: '12345', currency: 'XCG', merchant_name: 'Merchant 1')
+    @acc2 = Account.create(type: 'business', title: 'Simple business account 2', account_number: '54321', currency: 'XCG', merchant_name: 'Merchant 2')
+    @acc3 = Account.create(type: 'business', title: 'Simple business account 3', account_number: '99999', currency: 'XCG', merchant_name: 'Merchant with no Transactions inc.')
 
     @term1_1 = Terminal.create(account_id: @acc1.id)
     @cashier1_1_1 = Cashier.create(terminal_id: @term1_1.id, full_name: '@cashier1_1_1', hashed_pin: 'bugavuga')
@@ -64,7 +64,7 @@ class ImporterTest < Test
     lodge_last = Proc.new do
       t = Transaction.last
       ServicesLodgment.create(
-        currency: 'ANG', started_at: t.created_at,
+        currency: 'XCG', started_at: t.created_at,
         account_id: t.account_id, terminal_id: t.terminal_id, cashier_id: t.cashier_id, batch_number: t.services_batch_number
       )
     end
@@ -102,11 +102,11 @@ class ImporterTest < Test
       lodge_last[]
 
       # mappings to funny operator names
-      o = Operator.create(code: 'en', name: 'Entiero Na Kuota',  type: 'bill', currency: 'ANG')
+      o = Operator.create(code: 'en', name: 'Entiero Na Kuota',  type: 'bill', currency: 'XCG')
       Transaction.create mock_payment.merge(account_id: @acc2.id, terminal_id: @term2_1.id, cashier_id: @cashier2_1_1.id, amount: 20_00, operator_code: o.code, customer_number: '483734879', services_batch_number: 7, transaction_type: 'prepaid_mpos')
-      o = Operator.create(code: 'pb', name: 'Paga Bo But',       type: 'bill', currency: 'ANG')
+      o = Operator.create(code: 'pb', name: 'Paga Bo But',       type: 'bill', currency: 'XCG')
       Transaction.create mock_payment.merge(account_id: @acc2.id, terminal_id: @term2_1.id, cashier_id: @cashier2_1_1.id, amount: 20_00, operator_code: o.code, customer_number: '483734879', services_batch_number: 7, transaction_type: 'prepaid_mpos')
-      o = Operator.create(code: 'dp', name: 'DigiCell Postpaid', type: 'bill', currency: 'ANG')
+      o = Operator.create(code: 'dp', name: 'DigiCell Postpaid', type: 'bill', currency: 'XCG')
       Transaction.create mock_payment.merge(account_id: @acc2.id, terminal_id: @term2_1.id, cashier_id: @cashier2_1_1.id, amount: 20_00, operator_code: o.code, customer_number: '483734879', services_batch_number: 7, transaction_type: 'prepaid_mpos')
       lodge_last[]
 

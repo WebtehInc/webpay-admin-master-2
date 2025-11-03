@@ -10,6 +10,9 @@ puts "* Loading env from .dotenv file"
 require "dotenv"
 Dotenv.load
 
+# Ruby 3.x compatibility fix for ancient dry-* gems
+require "./ruby3_compat"
+
 require "./utils"
 require "./env/environment"
 require "./models"

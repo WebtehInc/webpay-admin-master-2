@@ -4,13 +4,13 @@ module Importers::Pagafasil
     include Importers::Helpers
 
     # {:id=>7133, :terminal_id=>97, :account_id=>75, :user_id=>nil, :parent_id=>nil, :type=>"credit", :api_version=>"1.0.0.",
-    #   :application_version=>"1.0.0.", :tid=>nil, :mid=>nil, :systan=>"146", :entry_method=>nil, :amount=>500, :currency=>"ANG",
+    #   :application_version=>"1.0.0.", :tid=>nil, :mid=>nil, :systan=>"146", :entry_method=>nil, :amount=>500, :currency=>"XCG",
     #   :number_of_installments=>nil, :transaction_type=>"prepaid_mpos", :pan=>nil, :exp_date=>nil, :ch_authentication=>nil,
     #   :pin_block=>nil, :ch_name=>nil, :emv_data=>nil, :track1=>nil, :track2=>nil, :track3=>nil, :approval_code=>nil,
     #   :reference_number=>nil, :response_code=>nil, :response_message=>nil, :status=>"approved",
     #   :created_at=>2017-11-22 11:47:01 -0400, :updated_at=>2017-11-22 11:47:01 -0400, :customer_number=>"04149031181",
     #   :operator_code=>"pa", :voucher_id=>nil, :description=>"Pagatinu voucher: 21581040888454519029",
-    #   :note=>"Batch balance: 5.0 ANG", :balance=>204206, :client_datetime=>2017-11-22 11:47:04 -0400, :acquirer=>nil,
+    #   :note=>"Batch balance: 5.0 XCG", :balance=>204206, :client_datetime=>2017-11-22 11:47:04 -0400, :acquirer=>nil,
     #   :gateway=>nil, :payment_method=>"cash", :payment_method_type=>"", :services_batch_number=>17, :cashier_id=>138,
     #   :admin_id=>nil, :voided=>false}>
 

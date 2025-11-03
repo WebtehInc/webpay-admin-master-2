@@ -9,7 +9,15 @@ module CurrentEnvironment
 
     # mail catcher
     Mail.defaults do
-      delivery_method :smtp, address: ENV["WP_SMTP_HOST"], port: ENV["WP_SMTP_PORT"]
+      delivery_method :smtp, {
+        address: ENV["WP_SMTP_HOST"],
+        port: ENV["WP_SMTP_PORT"],
+        user_name: ENV["WP_SMTP_USERNAME"],
+        password: ENV["WP_SMTP_PASSWORD"],
+        authentication: :plain,
+        enable_starttls_auto: true,
+        openssl_verify_mode: 'none'
+      }
     end
 
     # jwt

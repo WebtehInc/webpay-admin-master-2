@@ -22,7 +22,7 @@ module Importers
 
       begin
         # products hash
-        # {1000=>{:id=>2, :name=>"Chippie 10", :price=>1000, :currency=>"ANG", :type=>"voucher", :operator_code=>"ch",
+        # {1000=>{:id=>2, :name=>"Chippie 10", :price=>1000, :currency=>"XCG", :type=>"voucher", :operator_code=>"ch",
         # :info=>nil, :quantity=>1415, :notify_quantity=>10, :replenished_at=>nil, uploaded_count: 0, :uploaded_amount: 0} ...
         products = DB[:products].where(operator_code: operator.code).as_hash(:price)
 
