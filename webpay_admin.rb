@@ -194,6 +194,41 @@ class WebPayAdmin < Roda
           OperatorManageAccounts.call(self)
         end
       end
+
+      r.on "reset-password" do
+        puts "=> resetting password ..."
+
+        r.on ":token" do |token|
+          puts "=> getting admin by reset password token ..."
+          admin = Admin.find_all_values_by_attrs(reset_password_token: token)
+
+          r.get do
+            admin.try(:public_values)
+          end
+
+          r.post do
+            puts "=> token ok, updating password ..."
+            r.finalize_login(admin, self) if ResetPassword.call(admin, self)
+          end
+        end
+
+        # check email and generate reset token
+        r.post do
+          puts "=> getting admin by email ..."
+          admin = Admin.find_values_by_attrs([:id, :email, :first_name, :last_name], email: params[:email]).try(:to_hash)
+          if admin
+            puts "=> generating reset password token ..."
+            token = Utils.generate_random_token
+            Admin.update_without_audit(admin[:id], reset_password_token: token)
+            admin[:token] = token
+            Mailer.sendmail("/login/reset_password", admin)
+            render_success(message: "password reset done")
+          else
+            puts "=> no admin with given email ..."
+            render_success # do not reveal non existent email to client
+          end
+        end
+      end
     end
 
     # private routes started - 401
