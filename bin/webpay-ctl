@@ -26,9 +26,11 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BASE_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 # Service definitions
+# When this script is in webpay-admin-master/bin/, BASE_DIR is webpay-admin-master/
+# So admin-master service should point to current directory (.)
 declare -A SERVICES=(
     ["master"]="webpay-master/v2-current"
-    ["admin-master"]="webpay-admin-master/v2-current"
+    ["admin-master"]="."
     ["spa"]="webpay-spa/v2-current"
     ["admin-spa"]="webpay-admin-spa/v2-current"
 )
