@@ -93,6 +93,8 @@ class WebPayAdmin < Roda
 
     r.post "login" do
       puts "=> logging in ..."
+      puts "=> Authorization header: #{env['HTTP_AUTHORIZATION'].inspect}"
+      puts "=> All headers: #{env.select { |k, v| k.start_with?('HTTP_') }.inspect}"
       admin = Login.call(self)
       r.finalize_login(admin, self) if admin
     end
@@ -228,6 +230,13 @@ class WebPayAdmin < Roda
             render_success # do not reveal non existent email to client
           end
         end
+      end
+
+      # verify-otp with authentication required
+      r.post "verify-otp" do
+        authenticate!
+        puts "=> verifying otp (from /api/verify-otp) ..."
+        VerifyOtp.call(self)
       end
     end
 

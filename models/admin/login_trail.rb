@@ -9,6 +9,6 @@ class LoginTrail < Sequel::Model
 
     self.create admin_id: admin_id, ip: ip, user_agent: context.env['HTTP_USER_AGENT'],
                 browser_name: user_agent.browser, browser_version: user_agent.version,
-                platform: user_agent.platform
+                platform: user_agent.platform || 'Unknown'
   end
 end
