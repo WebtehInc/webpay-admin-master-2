@@ -7,17 +7,23 @@ module CurrentEnvironment
     # log sql
     # DB.loggers << LOGGER
 
-    # mail catcher
+    # mail catcher / sendmail
+    smtp_settings = {
+      address: ENV["WP_SMTP_HOST"],
+      port: ENV["WP_SMTP_PORT"],
+      enable_starttls_auto: false,
+      openssl_verify_mode: 'none'
+    }
+
+    # Only add authentication if username/password are provided
+    if ENV["WP_SMTP_USERNAME"].to_s.strip != ""
+      smtp_settings[:user_name] = ENV["WP_SMTP_USERNAME"]
+      smtp_settings[:password] = ENV["WP_SMTP_PASSWORD"]
+      smtp_settings[:authentication] = :plain
+    end
+
     Mail.defaults do
-      delivery_method :smtp, {
-        address: ENV["WP_SMTP_HOST"],
-        port: ENV["WP_SMTP_PORT"],
-        user_name: ENV["WP_SMTP_USERNAME"],
-        password: ENV["WP_SMTP_PASSWORD"],
-        authentication: :plain,
-        enable_starttls_auto: true,
-        openssl_verify_mode: 'none'
-      }
+      delivery_method :smtp, smtp_settings
     end
 
     # jwt
