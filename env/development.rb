@@ -32,8 +32,8 @@ module CurrentEnvironment
 
     # constants for mailer
     spa_host_url                = ENV['WP_SPA_HOST_URL']
-    Mailer.opts[:spa_constants] = { activate_admin_path: "#{spa_host_url}/activate",
-                                    reset_password_path: "#{spa_host_url}/forgotten-password"}
+    Mailer.opts[:spa_constants] = { activate_admin_path: "#{spa_host_url}/#/activate",
+                                    reset_password_path: "#{spa_host_url}/#/forgotten-password"}
 
     # send exceptions here
     Mailer.opts[:error_email]   = ENV["ERROR_EMAIL"].split(',')
