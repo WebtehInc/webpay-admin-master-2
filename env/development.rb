@@ -8,22 +8,9 @@ module CurrentEnvironment
     # DB.loggers << LOGGER
 
     # mail catcher / sendmail
-    smtp_settings = {
-      address: ENV["WP_SMTP_HOST"],
-      port: ENV["WP_SMTP_PORT"],
-      enable_starttls_auto: false,
-      openssl_verify_mode: 'none'
-    }
-
-    # Only add authentication if username/password are provided
-    if ENV["WP_SMTP_USERNAME"].to_s.strip != ""
-      smtp_settings[:user_name] = ENV["WP_SMTP_USERNAME"]
-      smtp_settings[:password] = ENV["WP_SMTP_PASSWORD"]
-      smtp_settings[:authentication] = :plain
-    end
-
+    # Use sendmail command for delivery to leverage genericstable mapping
     Mail.defaults do
-      delivery_method :smtp, smtp_settings
+      delivery_method :sendmail, arguments: ['-Am', '-i']
     end
 
     # jwt
