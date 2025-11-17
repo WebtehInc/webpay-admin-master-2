@@ -1,3 +1,4 @@
+require 'redis'
 require 'rack/attack'
 
 # Configure cache store (Redis)
@@ -11,7 +12,7 @@ Rack::Attack.cache.store = Rack::Attack::StoreProxy::RedisStoreProxy.new(
 
 # Throttle login attempts by IP address
 # Limit: 5 requests per 15 minutes
-Rack::Attack.throttle("login/ip", limit: 5, period: 15.minutes) do |req|
+Rack::Attack.throttle("login/ip", limit: 5, period: 900) do |req|
   if req.path == "/login" && req.post?
     req.ip
   end
@@ -19,7 +20,7 @@ end
 
 # Throttle login attempts by email address
 # Limit: 5 requests per 15 minutes
-Rack::Attack.throttle("login/email", limit: 5, period: 15.minutes) do |req|
+Rack::Attack.throttle("login/email", limit: 5, period: 900) do |req|
   if req.path == "/login" && req.post?
     # Extract email from request body (JSON)
     begin
@@ -43,8 +44,8 @@ Rack::Attack.blocklist("block-failed-logins") do |req|
     Rack::Attack::Allow2Ban.filter(
       "login-#{req.ip}",
       maxretry: 10,
-      findtime: 10.minutes,
-      bantime: 1.hour
+      findtime: 600,
+      bantime: 3600
     ) do
       # Only count failed login attempts
       # This requires checking response status in middleware
@@ -96,10 +97,3 @@ end
 # LOGGING
 # ================================================
 
-ActiveSupport::Notifications.subscribe("rack.attack") do |name, start, finish, request_id, payload|
-  req = payload[:request]
-
-  if [:throttle, :blocklist].include?(req.env['rack.attack.match_type'])
-    puts "[Rack::Attack] #{req.env['rack.attack.match_type']}: #{req.ip} - #{req.path}"
-  end
-end
