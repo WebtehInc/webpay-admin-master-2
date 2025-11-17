@@ -130,6 +130,9 @@ APP_ENV = {
   time: `git log -1 --format=%cd`.chomp,
 }
 
+# JWT blacklist service
+require "./lib/jwt_blacklist"
+
 # sequel
 require "./db/database"
 
