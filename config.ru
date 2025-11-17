@@ -5,6 +5,10 @@ require 'rack/cors'
 require 'dotenv'
 Dotenv.load
 
+# RATE LIMITING - MUST BE LOADED BEFORE APP
+require_relative 'config/initializers/rack_attack'
+use Rack::Attack
+
 # set secure headers
 require_relative "secure_headers"
 use Rack::SecureHeaders

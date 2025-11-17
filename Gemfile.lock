@@ -179,6 +179,8 @@ GEM
       puma (>= 2.7)
     racc (1.8.1)
     rack (3.2.3)
+    rack-attack (6.8.0)
+      rack (>= 1.0, < 4)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-test (2.2.0)
@@ -191,6 +193,10 @@ GEM
       erb
       psych (>= 4.0.0)
       tsort
+    redis (5.4.1)
+      redis-client (>= 0.22.0)
+    redis-client (0.26.1)
+      connection_pool
     reline (0.6.2)
       io-console (~> 0.5)
     rerun (0.14.0)
@@ -281,9 +287,11 @@ DEPENDENCIES
   puma (~> 6.4, >= 6.4.3)
   puma_worker_killer
   rack (~> 3.1)
+  rack-attack (~> 6.7)
   rack-cors (~> 2.0)
   rack-test
   rake (~> 13.0, >= 13.0.6)
+  redis (~> 5.0)
   rerun
   roda
   roda-symbolized_params

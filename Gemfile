@@ -42,6 +42,12 @@ gem "rqrcode"
 # memcached
 gem "dalli"
 
+# redis
+gem "redis", "~> 5.0"
+
+# rate limiting
+gem "rack-attack", "~> 6.7"
+
 # validation - Match webpay-master versions (Ruby 3.x compatible)
 gem "dry-configurable", "~> 1.1"
 gem "dry-container", "~> 0.11"
