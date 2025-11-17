@@ -10,20 +10,20 @@ gem "rerun"
 gem "irb"
 
 # server
-gem "puma", "~> 6.4", ">= 6.4.3"
+gem "puma", "~> 6.6"
 gem "puma_worker_killer"
 
 # db
-gem "sequel"
+gem "sequel", "~> 5.98"
 gem "sequel_pg", require: "sequel"
 gem "philtre"
-gem "pg"
+gem "pg", "~> 1.5"
 
 # faster JSON
-gem "oj"
+gem "oj", "~> 3.16"
 
 # web
-gem "rack", "~> 3.1"
+gem "rack", "~> 3.2", ">= 3.2.4"
 gem "rack-cors", "~> 2.0"
 gem "roda"
 gem "roda-symbolized_params"
@@ -32,8 +32,8 @@ gem "useragent"
 gem "facets"
 
 # jwt
-gem "jwt"
-gem "bcrypt"
+gem "jwt", "~> 2.10"
+gem "bcrypt", "~> 3.1"
 
 # totp
 gem "rotp", "3.3.1" # v4.0 will break otp codes

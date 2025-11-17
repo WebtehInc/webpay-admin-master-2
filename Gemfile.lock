@@ -107,7 +107,7 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.15.2)
-    jwt (3.1.2)
+    jwt (2.10.2)
       base64
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -178,7 +178,7 @@ GEM
       get_process_mem (>= 0.2)
       puma (>= 2.7)
     racc (1.8.1)
-    rack (3.2.3)
+    rack (3.2.4)
     rack-attack (6.8.0)
       rack (>= 1.0, < 4)
     rack-cors (2.0.2)
@@ -211,7 +211,7 @@ GEM
       rqrcode_core (~> 2.0)
     rqrcode_core (2.0.0)
     securerandom (0.4.1)
-    sequel (5.97.0)
+    sequel (5.98.0)
       bigdecimal
     sequel_pg (1.17.2)
       pg (>= 0.18.0, != 1.2.0)
@@ -255,7 +255,7 @@ PLATFORMS
 DEPENDENCIES
   activesupport (~> 7.0)
   awesome_print
-  bcrypt
+  bcrypt (~> 3.1)
   builder
   d_struct
   dalli
@@ -273,20 +273,20 @@ DEPENDENCIES
   foreman
   ibanizator
   irb
-  jwt
+  jwt (~> 2.10)
   m
   mail
   minitest
   nokogiri (~> 1.16, >= 1.16.5)
-  oj
-  pg
+  oj (~> 3.16)
+  pg (~> 1.5)
   philtre
   prawn
   prawn-table
   pry
-  puma (~> 6.4, >= 6.4.3)
+  puma (~> 6.6)
   puma_worker_killer
-  rack (~> 3.1)
+  rack (~> 3.2, >= 3.2.4)
   rack-attack (~> 6.7)
   rack-cors (~> 2.0)
   rack-test
@@ -297,7 +297,7 @@ DEPENDENCIES
   roda-symbolized_params
   rotp (= 3.3.1)
   rqrcode
-  sequel
+  sequel (~> 5.98)
   sequel_pg
   tilt
   tty-command
